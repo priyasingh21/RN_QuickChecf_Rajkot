@@ -18,6 +18,14 @@ class Login extends Component {
         }, 2000)
     }
 
+    UNSAFE_componentWillReceiveProps(nextProps){
+            if(this.props !== nextProps) {
+                const {User} = nextProps;
+                const {user} = User;
+                debugger
+            }
+        }
+
     onPhoneBtnClick = (type) => {
         this.props.navigation.navigate('SignInWithPhone', {type})
     }
@@ -35,7 +43,6 @@ class Login extends Component {
 
         return(
             <View style={{flex: 1 }}>
-                {/* <ProcessIndicator color={colors.WHITE} isProcessing={isLoading} /> */}
                 <ImageBackground
                     source={require('../../../../assets/splash.png')}
                     style={{

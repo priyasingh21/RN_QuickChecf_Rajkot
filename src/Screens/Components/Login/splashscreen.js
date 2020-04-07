@@ -15,7 +15,6 @@ class Splashscreen extends Component {
 
     componentDidMount() {
         this.handleScreenNavigation();
-
         NetInfo.addEventListener((state) => {
 
             if (!state.isConnected && this.state.connection_Status !== state.isConnected) {
@@ -32,23 +31,24 @@ class Splashscreen extends Component {
         });
     }
 
+    UNSAFE_componentWillReceiveProps(nextProps){
+        if(this.props !== nextProps) {
+            const {User} = nextProps;
+            const {user} = User;
+        }
+    }
+
     handleScreenNavigation = () => {
+        const {User} = this.props;
+        const {user} = User;
         AsyncStorage.getItem('loginData').then(res => {
-            if (res && JSON.parse(res).id) {
-                AsyncStorage.getItem('setVerificationCode').then(result => {
-                    if (JSON.parse(result).type === 'email') {
-                        this.props.navigation.navigate('AppDrawer');
-                    } else if (JSON.parse(result).type === 'phone' && JSON.parse(result).entered === true) {
-                        this.props.navigation.navigate('AppDrawer');
-                    } else {
-                        this.props.navigation.navigate('InitialScreen');
-                    }
-                }).catch(error => {
-                })
+            if(res && JSON.parse(res).id) {
+                this.props.navigation.navigate('AppDrawer');
             } else {
                 this.props.navigation.navigate('InitialScreen');
             }
         }).catch(e => {
+
         })
     }
 

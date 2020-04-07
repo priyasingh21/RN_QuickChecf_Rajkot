@@ -29,9 +29,9 @@ class SignInWithPhone extends Component {
 
     UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
         const { User } = nextProps;
+        const { user, countries } = User;
         const { type, country_code_Arr } = this.state;
         let newType = nextProps.navigation.state.params.type;
-        const { countries } = User;
 
         if(this.props !== nextProps) {
 
@@ -40,13 +40,13 @@ class SignInWithPhone extends Component {
                     country_code_Arr: countries.data
                 })
             }
-    
+
             if (newType !== type) {
                 this.setState({ type: newType })
             }
-    
-            if(this.props.User && this.props.User.user && User && User.user && this.props.User.user !== User.user) {
+            if(this.props && user && this.props !== user) {
                 let newUser = User.user.success
+                debugger
                 if (!newUser) {
                     let error = User.user.message;
                     if(error) {
@@ -58,31 +58,12 @@ class SignInWithPhone extends Component {
                         })
                     }
                 } else {
-                    if (User && User.user && User.user.success) {
-                        AsyncStorage.getItem('loginData').then(res => {
-                            if (res && JSON.parse(res).id) {
-                                if (type === 'email') {
-                                    this.setState({
-                                        isLoading: false
-                                    }, () => {
-                                        this.props.navigation.navigate('AppDrawer');
-                                    })
-                                } else {
-                                    let mobileNumber = JSON.parse(res).mobile;
-                                    let verificationCode = JSON.parse(res).verification_code;
-                                    this.setState({
-                                        isLoading: false
-                                    }, () => {
-                                        this.props.navigation.navigate('MobileVerificationScreen', { mobileNumber, verificationCode });
-                                    })
-                                }
-                            }
-                        }).catch(e => {
-                            this.setState({
-                                error: 'Error in getting login data from async',
-                                isCustomAlertShow: true
-                            })
-                        });
+                    debugger
+                    if(newType === 'phone') {
+                        this.props.navigation.navigate('MobileVerificationScreen')
+                    } else {
+                     AsyncStorage.setItem('loginData', JSON.stringify(user));
+                     this.props.navigation.navigate('AppDrawer')
                     }
                 }
             }
@@ -136,8 +117,8 @@ class SignInWithPhone extends Component {
 
     hideBanner = () => {
         setTimeout(() => {
-            this.setState({ 
-                showBanner: false, 
+            this.setState({
+                showBanner: false,
                 isLoading: false ,
                 isFirstTime: true,
                 error: '',
