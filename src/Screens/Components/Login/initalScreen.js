@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {View, TouchableOpacity, Text, ImageBackground} from 'react-native';
-import { colors, hp, wp, fontSizes, boxShadow } from '../../../Helper';
-import NetInfo from '@react-native-community/netinfo';
-import { SmallAppButton, ProcessIndicator } from '../../Common';
+import { colors, hp, wp, fontSizes } from '../../../Helper';
+import { SmallAppButton } from '../../Common';
 
 class InitialScreen extends Component {
 
@@ -12,36 +11,6 @@ class InitialScreen extends Component {
             connection_Status: "",
         }
     }
-
-    componentDidMount() {
-
-        NetInfo.addEventListener('connectionChange', this.handlspeConnectivityChange)
-
-        NetInfo.isConnected.fetch().done((isConnected) => {
-            if (isConnected == true) {
-                this.setState({ connection_Status: "Online" })
-            }
-            else {
-                this.setState({ connection_Status: "Offline" }, () => {
-                    alert('You have lost connection. Please connect you device.')
-                })
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
-    }
-
-    handleConnectivityChange = (isConnected) => {
-        if (isConnected == true) {
-            this.setState({ connection_Status: "Online" })
-        } else {
-            this.setState({ connection_Status: "Offline" }, () => {
-                alert('You have lost connection. Please connect you device.')
-            })
-        }
-    };
 
     onSignInClick = () => {
         const {navigation} = this.props;

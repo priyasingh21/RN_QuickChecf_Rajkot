@@ -15,8 +15,7 @@ import {
 } from '../../../Helper'
 import { AppButton, CustomHeader, ActionSheet } from "../../Common";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import * as ImagePicker from 'expo-image-picker';
-import { Camera } from 'expo-camera';
+import * as ImagePicker from 'react-native-image-crop-picker';
 
 const spicyMenu = ['Mild', 'Medium', 'Hot'];
 
@@ -191,31 +190,86 @@ class CreateMenu extends Component {
     }
 
     openImagePickerAsync = async () => {
-        const { images } = this.state
-        let arr = images
-        let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-        if (permissionResult.granted === false) {
-            alert("Permission to access camera roll is required!");
-            return;
+        let imgOption = {
+            width: 400,
+            height: 400,
+            cropping: true,
+            mediaType: 'photo',
+            includeBase64: true,
+            writeTempFile: true,
+            multiple: true,
+            maxFiles: 15,
+            compressImageMaxWidth: 640,
+            compressImageMaxHeight: 480,
+            compressImageQuality: 0.75,
         }
-        let image = await ImagePicker.launchImageLibraryAsync();
-        console.log(image);
-        this.setState({ showPicker: false })
-        arr[this.index] = { filename: image.uri.split('/').pop(), sourceURL: image.uri, type: image.type }
-        this.onChangeValuye('images', arr)
+
+        ImagePicker.openPicker(imgOption).then(image => {
+            console.log('image =>', image)
+            this.setState({showPicker: false});
+
+            if(image.length > 0) {
+                image.map((i, index) => {
+                    arr[this.index] = {filename: i.path.split('/').pop(), sourceURL: i.path, type: i.mime}
+                    this.index += 1
+                })
+            }
+
+            this.onChangeValuye('images', arr)
+        }).catch((e) => {
+            if(e.code === 'E_PICKER_CANCELLED') {
+                this.setState({showPicker: false})
+            } else {
+                this.checkPermission();
+            }
+        })
     }
 
-    openCameraAsync = async () => {
-        const { images } = this.state
-        let arr = images
-        let permissionResult = await Camera.requestPermissionsAsync();
-        if (permissionResult.granted === false) {
-            alert("Permission to access camera is required!");
-            return;
+    openCameraAsync = () => {
+    const {images} = this.state
+    let arr = images
+
+        let imgOption = {
+            width: 400,
+            height: 400,
+            cropping: true,
+            mediaType: 'photo',
+            includeBase64: true,
+            writeTempFile: true,
+            multiple: true,
+            maxFiles: 15,
+            compressImageMaxWidth: 640,
+            compressImageMaxHeight: 480,
+            compressImageQuality: 0.75,
         }
-        let image = await Camera.takePictureAsync();
-        console.log(image);
-        this.setState({ showPicker: false })
+        ImagePicker.openCamera(imgOption).then(image => {
+            this.setState({showPicker: false})
+            arr[this.index] = {filename: image.path.split('/').pop(), sourceURL: image.path, type: image.mime}
+            this.onChangeValuye('images', arr)
+        }).catch((e) => {
+            if(e.code === 'E_PICKER_CANCELLED') {
+                this.setState({showPicker: false})
+            } else {
+                this.checkPermission();
+            }
+        })
+    }
+
+    checkPermission = () => {
+        Alert.alert('Permission Warning', 'You have not allowed this app to use camera/photos. Do you want to change permissions?',[
+                {
+                    text: 'No',
+                    onPress: () => {this.setState({showPicker: false})},
+                    style: 'cancel'
+                },
+                {text: 'Yes',
+                    onPress: () => {
+                        openSettings().then(res => {}).catch(e => {console.log(JSON.stringify(e))})
+                    }
+                },
+            ],
+            {cancelable: false}
+        )
     }
 
     componentWillUnmount() {

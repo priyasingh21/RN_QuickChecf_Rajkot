@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, Image, Platform } from 'react-native';
+import { View, ImageBackground, Image, Platform, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { colors, hp, wp, fontSizes, boxShadow } from '../../../Helper';
 import NetInfo from '@react-native-community/netinfo';
-import Constants from 'expo-constants';
-import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
 
 class Splashscreen extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             connection_Status: "",
-            errorMessage: "",
-            location: null,
         }
     }
 
-    UNSAFE_componentWillMount() {
-        if (Platform.OS === 'android' && !Constants.isDevice) {
-            this.setState({
-                errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
-            });
-        } else {
-            this._getLocationAsync();
-        }
+    componentDidMount() {
+        this.handleScreenNavigation();
 
+        NetInfo.addEventListener((state) => {
+
+            if (!state.isConnected && this.state.connection_Status !== state.isConnected) {
+                this.setState({
+                    connection_Status: state.isConnected
+                })
+                Alert.alert('No Internet', 'Please try again later', [{text: 'OK'}])
+
+            } else {
+                this.setState({
+                    connection_Status: state.isConnected
+                })
+            }
+        });
+    }
+
+    handleScreenNavigation = () => {
         AsyncStorage.getItem('loginData').then(res => {
             if (res && JSON.parse(res).id) {
                 AsyncStorage.getItem('setVerificationCode').then(result => {
@@ -36,11 +42,8 @@ class Splashscreen extends Component {
                         this.props.navigation.navigate('AppDrawer');
                     } else {
                         this.props.navigation.navigate('InitialScreen');
-
                     }
-
                 }).catch(error => {
-
                 })
             } else {
                 this.props.navigation.navigate('InitialScreen');
@@ -49,59 +52,7 @@ class Splashscreen extends Component {
         })
     }
 
-    componentDidMount() {
-        NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityChange);
-
-        NetInfo.isConnected.fetch().done((isConnected) => {
-            if (isConnected == true) {
-                this.setState({ connection_Status: "Online" })
-            }
-            else {
-                this.setState({ connection_Status: "Offline" }, () => {
-                    alert('You have lost connection. Please connect you device.')
-                })
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
-    }
-
-    _getLocationAsync = () => {
-        Permissions.askAsync(Permissions.LOCATION).then(({ status }) => {
-            if (status !== 'granted') {
-                this.setState({
-                    errorMessage: 'Permission to access location was denied',
-                });
-            }
-        });
-
-
-        Location.getCurrentPositionAsync({}).then(({ location }) => {
-            if (location !== null) {
-                this.setState({ location }, () => {
-                    AsyncStorage.setItem('deviceLocation', JSON.stringify(location))
-                });
-            }
-        });
-    };
-
-    handleConnectivityChange = (isConnected) => {
-        if (isConnected == true) {
-            // this.setState({ connection_Status: "Online" })
-        }
-        else {
-            alert('You have lost connection. Please connect you device.')
-            // this.setState({ connection_Status: "Offline" }, () => {
-            //     alert('You have lost connection. Please connect you device.')
-            // })
-        }
-    };
-
     render() {
-
-        const { location, errorMessage } = this.state;
         return (
             <View style={{ flex: 1 }}>
                 <ImageBackground
@@ -112,14 +63,6 @@ class Splashscreen extends Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                    {/* <View style={{
-                        height: hp(12),
-                        width: hp(40),
-                        padding: wp(2)
-                    }}>
-                        <Image source={require('../../../../assets/QKLogo.jpeg')} style={{ height: '100%', width: '100%', }} />
-                    </View> */}
-
                     <View style={{
                         height: wp(1),
                         width: wp(35),

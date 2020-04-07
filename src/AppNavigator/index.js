@@ -1,4 +1,4 @@
-import { AsyncStorage } from '@react-native-community/async-storage';
+import AsyncStorage  from '@react-native-community/async-storage';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -23,7 +23,7 @@ let initRoute = 'Splashscreen';
 
 AsyncStorage.getItem('loginData').then(res => {
     if(res && JSON.parse(res).id){
-        initRoute = 'AppDrawer'
+         initRoute = 'AppDrawer'
     }
 }).catch(e => {});
 

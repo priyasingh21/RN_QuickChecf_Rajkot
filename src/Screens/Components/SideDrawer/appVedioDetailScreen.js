@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {FlatList, Text, View, BackHandler} from 'react-native';
 import {boxShadow, colors, fontSizes, hp, outerBoxShadow, wp} from '../../../Helper'
 import {AppButton, CustomHeader} from "../../Common";
-import { Video } from 'expo-av';
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const videoData = [{
@@ -73,18 +72,17 @@ class AppVedioDetailScreen extends Component{
                         alignItems: 'flex-start',
                         paddingHorizontal: wp(2)
                     }}>
-                        <Video
-                            source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-                            rate={1.0}
-                            volume={1.0}
-                            isMuted={false}
-                            resizeMode="cover"
-                            shouldPlay={false}
-                            isLooping={false}
-                            style={{ width: '100%', height: '100%' }}
-                            useNativeControls={true}
-                        />
-                        {/*<Text>{item.title}</Text>*/}
+                        {/*<Video*/}
+                        {/*    source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}*/}
+                        {/*    rate={1.0}*/}
+                        {/*    volume={1.0}*/}
+                        {/*    isMuted={false}*/}
+                        {/*    resizeMode="cover"*/}
+                        {/*    shouldPlay={false}*/}
+                        {/*    isLooping={false}*/}
+                        {/*    style={{ width: '100%', height: '100%' }}*/}
+                        {/*    useNativeControls={true}*/}
+                        {/*/>*/}
                     </View>
 
                     <View style={{
@@ -131,19 +129,6 @@ class AppVedioDetailScreen extends Component{
                         showsVerticalScrollIndicator={false}
                     />
                 </View>
-                {/*<View style={{flex: 1, backgroundColor: 'pink'}}>
-                    <Video
-                        source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-                        rate={1.0}
-                        volume={1.0}
-                        isMuted={false}
-                        resizeMode="cover"
-                        shouldPlay={false}
-                        isLooping={false}
-                        style={{ width: 300, height: 300 }}
-                        useNativeControls={true}
-                    />
-                </View>*/}
             </View>
         )
     }

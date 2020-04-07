@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View, TouchableOpacity, Text, StyleSheet, Image, ImageBackground} from 'react-native';
 import { colors, hp, wp, boxShadow, fontSizes } from '../../../Helper';
 import { AppButton, ProcessIndicator } from '../../Common';
-import {BubblesLoader} from 'react-native-indicator';
 
 class Login extends Component {
 
