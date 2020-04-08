@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04F7E26E243CD67A00D92453 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F7E26D243CD67A00D92453 /* libRNVectorIcons.a */; };
+		04C98D35243E24CF00CCB7D2 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C98D34243E24CF00CCB7D2 /* libRNVectorIcons.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		78BC973BA9C3DC0451CA156E /* libPods-QK_Chef.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAA3978BCD608F65F1ABF28 /* libPods-QK_Chef.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* QK_ChefTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QK_ChefTests.m; sourceTree = "<group>"; };
+		04C98D22243E22CA00CCB7D2 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C98D30243E241100CCB7D2 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		04C98D34243E24CF00CCB7D2 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F7E26D243CD67A00D92453 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		08998DC4F0727CC6881A6683 /* Pods-QK_Chef.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QK_Chef.release.xcconfig"; path = "Target Support Files/Pods-QK_Chef/Pods-QK_Chef.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* QK_Chef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QK_Chef.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,8 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F7E26E243CD67A00D92453 /* libRNVectorIcons.a in Frameworks */,
-				78BC973BA9C3DC0451CA156E /* libPods-QK_Chef.a in Frameworks */,
+				04C98D35243E24CF00CCB7D2 /* libRNVectorIcons.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +91,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04C98D34243E24CF00CCB7D2 /* libRNVectorIcons.a */,
+				04C98D30243E241100CCB7D2 /* libRNVectorIcons.a */,
+				04C98D22243E22CA00CCB7D2 /* libRNVectorIcons.a */,
 				04F7E26D243CD67A00D92453 /* libRNVectorIcons.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,

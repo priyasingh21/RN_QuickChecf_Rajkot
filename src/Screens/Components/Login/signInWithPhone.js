@@ -46,7 +46,6 @@ class SignInWithPhone extends Component {
             }
             if(this.props && user && this.props !== user) {
                 let newUser = User.user.success
-                debugger
                 if (!newUser) {
                     let error = User.user.message;
                     if(error) {
@@ -58,12 +57,11 @@ class SignInWithPhone extends Component {
                         })
                     }
                 } else {
-                    debugger
                     if(newType === 'phone') {
                         this.props.navigation.navigate('MobileVerificationScreen')
                     } else {
-                     AsyncStorage.setItem('loginData', JSON.stringify(user));
-                     this.props.navigation.navigate('AppDrawer')
+                        AsyncStorage.setItem('loginData', JSON.stringify(user));
+                        this.props.navigation.navigate('AppDrawer')
                     }
                 }
             }
@@ -99,7 +97,7 @@ class SignInWithPhone extends Component {
             handleLocalAction({ type: localActions.LOGIN_CHEF, data: { username: phoneNumber, type } })
         } else {
             if (email !== '' && password !== '') {
-            AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: 'email'}))
+                AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: 'email', entered: true}))
                 handleLocalAction({ type: localActions.LOGIN_CHEF, data: { username: email, password, type } })
             } else {
                 this.updateText('Enter Email And Password', 'error');
@@ -267,12 +265,12 @@ class SignInWithPhone extends Component {
                     <SmallAppButton btnStyle={{ width: wp(22), marginTop: wp(5)}} onPress={this.onContinueClick} btnTitle={'Continue'} />
                 </ImageBackground>
                 {(this.state.isCustomAlertShow) &&
-                    <CustomAlert
-                        title={'Error'}
-                        message={error}
-                        buttonTitle={'Ok'}
-                        handleAlertButtonClick={this.handleAlertOk}
-                    />}
+                <CustomAlert
+                    title={'Error'}
+                    message={error}
+                    buttonTitle={'Ok'}
+                    handleAlertButtonClick={this.handleAlertOk}
+                />}
             </View>
         )
     }

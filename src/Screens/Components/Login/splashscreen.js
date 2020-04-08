@@ -41,14 +41,24 @@ class Splashscreen extends Component {
     handleScreenNavigation = () => {
         const {User} = this.props;
         const {user} = User;
+        debugger
         AsyncStorage.getItem('loginData').then(res => {
             if(res && JSON.parse(res).id) {
-                this.props.navigation.navigate('AppDrawer');
+                AsyncStorage.getItem('setVerificationCode').then(response => {
+                    alert(JSON.parse(response).type)
+                    if(response && JSON.parse(response) && JSON.parse(response).type === ('phone' || 'email') && JSON.parse(response).entered) {
+                        this.props.navigation.navigate('AppDrawer');
+                    } else if(response && JSON.parse(response) && JSON.parse(response).type === 'phone' && !JSON.parse(response).entered) {
+                        this.props.navigation.navigate('Login');
+                    } else {
+                        this.props.navigation.navigate('Login');
+                    }
+                })
             } else {
                 this.props.navigation.navigate('InitialScreen');
             }
         }).catch(e => {
-
+            this.props.navigation.navigate('InitialScreen');
         })
     }
 
