@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { View, ImageBackground, Image, Platform, Alert } from 'react-native';
+import React, {Component} from 'react';
+import {Alert, ImageBackground, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { colors, hp, wp, fontSizes, boxShadow } from '../../../Helper';
+import {colors, hp, wp} from '../../../Helper';
 import NetInfo from '@react-native-community/netinfo';
 
 class Splashscreen extends Component {
@@ -15,8 +15,8 @@ class Splashscreen extends Component {
 
     componentDidMount() {
         this.handleScreenNavigation();
-        NetInfo.addEventListener((state) => {
 
+        NetInfo.addEventListener((state) => {
             if (!state.isConnected && this.state.connection_Status !== state.isConnected) {
                 this.setState({
                     connection_Status: state.isConnected
@@ -31,34 +31,27 @@ class Splashscreen extends Component {
         });
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps){
-        if(this.props !== nextProps) {
-            const {User} = nextProps;
-            const {user} = User;
-        }
-    }
-
     handleScreenNavigation = () => {
         const {User} = this.props;
         const {user} = User;
-        debugger
         AsyncStorage.getItem('loginData').then(res => {
-            if(res && JSON.parse(res).id) {
-                AsyncStorage.getItem('setVerificationCode').then(response => {
-                    alert(JSON.parse(response).type)
-                    if(response && JSON.parse(response) && JSON.parse(response).type === ('phone' || 'email') && JSON.parse(response).entered) {
-                        this.props.navigation.navigate('AppDrawer');
-                    } else if(response && JSON.parse(response) && JSON.parse(response).type === 'phone' && !JSON.parse(response).entered) {
-                        this.props.navigation.navigate('Login');
-                    } else {
-                        this.props.navigation.navigate('Login');
-                    }
-                })
+            if(res && JSON.parse(res).success) {
+                let data = JSON.parse(res).data;
+                if(data && data.length > 0 && data[0].id) {
+                    AsyncStorage.getItem('setVerificationCode').then(response => {
+                        if(response && JSON.parse(response) && JSON.parse(response).type === ('phone' || 'email') && JSON.parse(response).entered) {
+                            this.props.navigation.navigate('AppDrawer');
+                        } else if(response && JSON.parse(response) && JSON.parse(response).type === 'phone' && !JSON.parse(response).entered) {
+                            this.props.navigation.navigate('Login');
+                        } else {
+                            this.props.navigation.navigate('Login');
+                        }
+                    })
+                }
             } else {
                 this.props.navigation.navigate('InitialScreen');
             }
         }).catch(e => {
-            this.props.navigation.navigate('InitialScreen');
         })
     }
 

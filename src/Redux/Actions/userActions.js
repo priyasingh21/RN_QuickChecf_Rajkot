@@ -76,12 +76,14 @@ const signIn = (data = {}) => {
             })
                 .then(response => response.json())
                 .then(res => {
-                    processing(dispatch)
+                    processing(dispatch);
                     if (res && res.success) {
-                        dispatch({
-                            payload: res,
-                            type: LOGIN_CHEF
-                        });
+                        AsyncStorage.setItem('loginData', JSON.stringify(res), (r) => {
+                            dispatch({
+                                payload: res,
+                                type: LOGIN_CHEF
+                            });
+                        })
                     } else {
                         if (res && res.data === 401) {
                             processing(dispatch)

@@ -45,9 +45,9 @@ class SignInWithPhone extends Component {
                 this.setState({ type: newType })
             }
             if(this.props && user && this.props !== user) {
-                let newUser = User.user.success
+                let newUser = user.success
                 if (!newUser) {
-                    let error = User.user.message;
+                    let error = user.message;
                     if(error) {
                         this.setState({
                             showBanner: true,
@@ -60,7 +60,6 @@ class SignInWithPhone extends Component {
                     if(newType === 'phone') {
                         this.props.navigation.navigate('MobileVerificationScreen')
                     } else {
-                        AsyncStorage.setItem('loginData', JSON.stringify(user));
                         this.props.navigation.navigate('AppDrawer')
                     }
                 }
@@ -93,12 +92,14 @@ class SignInWithPhone extends Component {
                 return
             }
             this.updateText('', 'error');
-            AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: 'phone', entered: false}))
-            handleLocalAction({ type: localActions.LOGIN_CHEF, data: { username: phoneNumber, type } })
+            AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: 'phone', entered: false}), () => {
+                handleLocalAction({ type: localActions.LOGIN_CHEF, data: { username: phoneNumber, type } })
+            })
         } else {
             if (email !== '' && password !== '') {
-                AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: 'email', entered: true}))
-                handleLocalAction({ type: localActions.LOGIN_CHEF, data: { username: email, password, type } })
+                AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: 'email', entered: true}), () => {
+                    handleLocalAction({ type: localActions.LOGIN_CHEF, data: { username: email, password, type } })
+                })
             } else {
                 this.updateText('Enter Email And Password', 'error');
                 this.setState({ showBanner: true, isFirstTime: false })

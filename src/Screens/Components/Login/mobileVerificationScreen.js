@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, ImageBackground, AsyncStorage } from 'react-native';
+import { View, Text, TextInput, ImageBackground } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage'
 import { colors, hp, wp, fontSizes } from '../../../Helper';
 import { SmallAppButton, ProcessIndicator, CustomAlert } from '../../Common';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -109,8 +110,10 @@ class MobileVerificationScreen extends Component {
         this.updateText('', 'error');
 
         if (verification_code && verification_code.length === 6 && verificationCodeResponse && (verificationCodeResponse.toString() === verification_code)) {
-            AsyncStorage.setItem('setVerificationCode', JSON.stringify({ type: 'phone', entered: true }))
-            this.props.navigation.navigate('AppDrawer');
+            alert('aaaa')
+            AsyncStorage.setItem('setVerificationCode', JSON.stringify({ type: 'phone', entered: true }), () => {
+                this.props.navigation.navigate('AppDrawer');
+            })
         } else {
             this.updateText('Whooops,\nEntered code is wrong, Please try again...', 'error')
             this.setState({ isShowError: true })

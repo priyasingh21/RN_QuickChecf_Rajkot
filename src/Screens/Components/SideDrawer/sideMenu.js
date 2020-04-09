@@ -124,16 +124,17 @@ class SideMenu extends Component {
             isAlertVisible: false
         }, () => {
             this.props.navigation.closeDrawer();
-            AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: '', entered: ''}))
-            handleLocalAction({ type: localActions.LOGOUT})
-            AsyncStorage.getItem('loginData').then(res => {
-                if(JSON.parse(res) === null) {
-                    let resetAction = StackActions.reset({
-                        index: 0,
-                        actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
-                    })
-                    this.props.navigation.dispatch(resetAction);
-                }
+            AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: '', entered: ''}), () => {
+                handleLocalAction({ type: localActions.LOGOUT});
+                AsyncStorage.getItem('loginData').then(res => {
+                    if(JSON.parse(res) === null) {
+                        let resetAction = StackActions.reset({
+                            index: 0,
+                            actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
+                        })
+                        this.props.navigation.dispatch(resetAction);
+                    }
+                })
             })
         })
     }
