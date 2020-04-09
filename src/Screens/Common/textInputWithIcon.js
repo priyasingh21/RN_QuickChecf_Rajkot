@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import {colors, hp, wp} from "../../Helper";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import MaterialCommunityIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons'
-import OcticonsIcon from 'react-native-vector-icons/Octicons'
+// import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+// import MaterialCommunityIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import OcticonsIcon from 'react-native-vector-icons/Octicons'
 
 class CustomTextInput extends Component{
 
@@ -16,28 +16,31 @@ class CustomTextInput extends Component{
                 {
                     (iconFileName) && <View style={iconView}>
                         {
-                            (iconFileName === 'FontAwesomeIcon') && <FontAwesomeIcon
-                                name={iconName && iconName}
-                                color={colors.LIGHTGRAY}
-                                size={wp(6)}
-                            />
-                            || (iconFileName === 'MaterialCommunityIconsIcon') && <MaterialCommunityIconsIcon
-                                name={iconName && iconName}
-                                color={colors.LIGHTGRAY}
-                                size={wp(6)}
-                            />
-                            || (iconFileName === 'OcticonsIcon') && <OcticonsIcon
-                                name={iconName && iconName}
-                                color={colors.LIGHTGRAY}
-                                size={wp(6)}
-                            />
+                            (iconFileName === 'FontAwesomeIcon') &&
+                                null
+                            // <FontAwesomeIcon
+                            //     name={iconName && iconName}
+                            //     color={colors.LIGHTGRAY}
+                            //     size={wp(6)}
+                            // />
+                            || (iconFileName === 'MaterialCommunityIconsIcon') && null
+                            // <MaterialCommunityIconsIcon
+                            //     name={iconName && iconName}
+                            //     color={colors.LIGHTGRAY}
+                            //     size={wp(6)}
+                            // />
+                            || (iconFileName === 'OcticonsIcon') && null
+                            // <OcticonsIcon
+                            //     name={iconName && iconName}
+                            //     color={colors.LIGHTGRAY}
+                            //     size={wp(6)}
+                            // />
                         }
                     </View>
                 }
 
                 <View style={textInputContainer}>
                     <TextInput
-                        secureTextEntry
                         style={(iconFileName) ? textInputStyle : [textInputStyle, {paddingHorizontal: wp(4)}]}
                         placeholder={placeHolderText && placeHolderText || ''}
                         placeholderTextColor={placeHolderColor? placeHolderColor : colors.LIGHTGRAY}

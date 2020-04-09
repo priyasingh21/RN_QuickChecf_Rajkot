@@ -11,7 +11,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage';
 import { colors, fontSizes, hp, wp, boxShadow } from '../../../Helper'
 import { AppButton, CustomHeader, Banner } from "../../Common";
-import Icon from 'react-native-vector-icons/AntDesign';
+// import Icon from 'react-native-vector-icons/AntDesign';
 
 class AccountScreen extends Component {
 
@@ -174,11 +174,11 @@ class AccountScreen extends Component {
 
                                 <TouchableOpacity  onPress={() => this.props.navigation.navigate('CreateMenu')}>
                                     <View style={chefMenuView} >
-                                        <Icon
-                                            name={'edit'}
-                                            size={wp(5)}
-                                            color={colors.WHITE}
-                                        />
+                                        {/*<Icon*/}
+                                        {/*    name={'edit'}*/}
+                                        {/*    size={wp(5)}*/}
+                                        {/*    color={colors.WHITE}*/}
+                                        {/*/>*/}
                                     </View>
                                     <Text style={[chefMenuTextStyle, { color: colors.APPBROWN, fontSize: fontSizes.medium, marginTop: wp(1), alignSelf: 'center' }]}>{'Edit Menu'}</Text>
                                 </TouchableOpacity>

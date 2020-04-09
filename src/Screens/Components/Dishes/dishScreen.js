@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {View, Text, FlatList, Image, ScrollView, TouchableOpacity, StyleSheet, BackHandler} from 'react-native';
 import {boxShadow, colors, fontSizes, hp, wp, snackData, lunchData} from '../../../Helper'
 import {AppButton, CustomHeader} from "../../Common";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import Icon1 from 'react-native-vector-icons/AntDesign'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import Icon1 from 'react-native-vector-icons/AntDesign'
 
 class DishScreen extends Component{
 
@@ -81,13 +81,13 @@ class DishScreen extends Component{
                             alignItems: 'center',
                             flexDirection: 'row'
                         }}>
-                            <Icon
-                                name={'star'}
-                                color={colors.STARYELLOW}
-                                style={{
-                                    marginHorizontal: wp(1)
-                                }}
-                            />
+                            {/*<Icon*/}
+                            {/*    name={'star'}*/}
+                            {/*    color={colors.STARYELLOW}*/}
+                            {/*    style={{*/}
+                            {/*        marginHorizontal: wp(1)*/}
+                            {/*    }}*/}
+                            {/*/>*/}
                             <Text style={{
                                 color: colors.DARKGRAY,
                                 fontSize: fontSizes.xxxmini
@@ -135,7 +135,7 @@ class DishScreen extends Component{
                     borderRadius: wp(1),
                     flexDirection: 'row'
                 }}>
-                    <Icon name={materialRupeeIconName}size={wp(4)} />
+                    {/*<Icon name={materialRupeeIconName}size={wp(4)} />*/}
                     <Text>{price}</Text>
                 </View>
             </TouchableOpacity>
@@ -214,9 +214,9 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.medium,
                                     justifyContent: 'flex-end'
                                 }}>{'More'}</Text>
-                                <Icon1
-                                    name={'right'}
-                                />
+                                {/*<Icon1*/}
+                                {/*    name={'right'}*/}
+                                {/*/>*/}
                             </View>
 
                             <View style={{
@@ -263,9 +263,9 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.medium,
                                     justifyContent: 'flex-end'
                                 }}>{'More'}</Text>
-                                <Icon1
-                                    name={'right'}
-                                />
+                                {/*<Icon1*/}
+                                {/*    name={'right'}*/}
+                                {/*/>*/}
                             </View>
                         </ScrollView>
                     </View>
@@ -346,9 +346,9 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.medium,
                                     justifyContent: 'flex-end'
                                 }}>{'More'}</Text>
-                                <Icon1
-                                    name={'right'}
-                                />
+                                {/*<Icon1*/}
+                                {/*    name={'right'}*/}
+                                {/*/>*/}
                             </View>
 
                             <View style={{
@@ -395,9 +395,9 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.medium,
                                     justifyContent: 'flex-end'
                                 }}>{'More'}</Text>
-                                <Icon1
-                                    name={'right'}
-                                />
+                                {/*<Icon1*/}
+                                {/*    name={'right'}*/}
+                                {/*/>*/}
                             </View>
                         </ScrollView>
                     </View>
@@ -478,9 +478,9 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.medium,
                                     justifyContent: 'flex-end'
                                 }}>{'More'}</Text>
-                                <Icon1
-                                    name={'right'}
-                                />
+                                {/*<Icon1*/}
+                                {/*    name={'right'}*/}
+                                {/*/>*/}
                             </View>
 
                             <View style={{
@@ -527,9 +527,9 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.medium,
                                     justifyContent: 'flex-end'
                                 }}>{'More'}</Text>
-                                <Icon1
-                                    name={'right'}
-                                />
+                                {/*<Icon1*/}
+                                {/*    name={'right'}*/}
+                                {/*/>*/}
                             </View>
                         </ScrollView>
                     </View>
@@ -551,12 +551,12 @@ class DishScreen extends Component{
                                 fontSize: fontSizes.medium
                             }}>{'Buckwheat Cashew Cookies'}</Text>
 
-                            <Icon
-                                name={'close'}
-                                size={wp(6)}
-                                color={colors.WHITE}
-                                onPress={() => this.setState({isShowItemPopup: false})}
-                            />
+                            {/*<Icon*/}
+                            {/*    name={'close'}*/}
+                            {/*    size={wp(6)}*/}
+                            {/*    color={colors.WHITE}*/}
+                            {/*    onPress={() => this.setState({isShowItemPopup: false})}*/}
+                            {/*/>*/}
                         </View>
                         <ScrollView style={{flex: 1}}>
                             <View style={{height: hp(35)}}>
@@ -566,12 +566,12 @@ class DishScreen extends Component{
                                 />
                             </View>
                             <View style={currencyView}>
-                                <Icon
-                                    name={'currency-inr'}
-                                    size={wp(4)}
-                                    color={colors.BLACK}
-                                    onPress={() => this.setState({isShowItemPopup: false})}
-                                />
+                                {/*<Icon*/}
+                                {/*    name={'currency-inr'}*/}
+                                {/*    size={wp(4)}*/}
+                                {/*    color={colors.BLACK}*/}
+                                {/*    onPress={() => this.setState({isShowItemPopup: false})}*/}
+                                {/*/>*/}
                                 <Text style={{
                                     color: colors.BLACK,
                                     fontSize: fontSizes.medium
@@ -586,13 +586,13 @@ class DishScreen extends Component{
                                     fontSize: fontSizes.xxmini
                                 }}>{'Any Day'}</Text>
 
-                                <Icon
-                                    style={{marginHorizontal: wp(1)}}
-                                    name={'pot'}
-                                    size={wp(4)}
-                                    color={colors.BLACK}
-                                    onPress={() => this.setState({isShowItemPopup: false})}
-                                />
+                                {/*<Icon*/}
+                                {/*    style={{marginHorizontal: wp(1)}}*/}
+                                {/*    name={'pot'}*/}
+                                {/*    size={wp(4)}*/}
+                                {/*    color={colors.BLACK}*/}
+                                {/*    onPress={() => this.setState({isShowItemPopup: false})}*/}
+                                {/*/>*/}
                                 <Text style={{color: colors.APPGREEN, fontSize: fontSizes.xmini}}>{'0'}
                                     <Text style={{ color: colors.BLACK}}>{'  mins'}</Text>
                                 </Text>
@@ -638,12 +638,12 @@ class DishScreen extends Component{
                 <View style={detailContainer} >
                     <View style={filterContainer}>
                         <View style={{flex: 0.6}}>
-                            <Icon
-                                name={'filter-outline'}
-                                size={wp(7)}
-                                style={{marginTop: wp(0)}}
-                                color={colors.APPGREEN}
-                            />
+                            {/*<Icon*/}
+                            {/*    name={'filter-outline'}*/}
+                            {/*    size={wp(7)}*/}
+                            {/*    style={{marginTop: wp(0)}}*/}
+                            {/*    color={colors.APPGREEN}*/}
+                            {/*/>*/}
                         </View>
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate('Filters')}

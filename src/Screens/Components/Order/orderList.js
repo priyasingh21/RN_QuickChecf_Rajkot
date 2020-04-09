@@ -7,7 +7,7 @@ import {
     fontSizes
 } from '../../../Helper'
 import { CustomHeader, AppButton } from "../../Common";
-import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/Ionicons';
 
 class OrderList extends Component {
 
@@ -35,7 +35,7 @@ class OrderList extends Component {
                 <Text style={addressText}>
                     {`Name: ${customer_name}\nQuantity: ${qty}\nPlace: ${area}`}
                 </Text>
-                <Icon name={'ios-arrow-forward'} color={colors.GRAY} size={wp(4)} />
+                {/*<Icon name={'ios-arrow-forward'} color={colors.GRAY} size={wp(4)} />*/}
             </TouchableOpacity>
         )
     }

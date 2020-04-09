@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, CheckBox, TouchableOpacity, StyleSheet, FlatList, BackHandler } from 'react-native';
 import { boxShadow, colors, fontSizes, hp, outerBoxShadow, wp, communicationType } from '../../../Helper'
 import { AppButton, CustomHeader, Banner } from "../../Common";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 class CommunicationPreference extends Component {
 
@@ -18,7 +18,7 @@ class CommunicationPreference extends Component {
     componentWillReceiveProps(nextProps) {
         let communicationData = nextProps && nextProps.communicationPreference
         if(this.props && this.props.communicationPreference !== communicationData) {
-            
+
         }
     }
 
@@ -46,12 +46,12 @@ class CommunicationPreference extends Component {
                 key={index}
                 style={styles.checkboxContainer}>
 
-                <Icon
-                    name={(item.selected) ? 'checkbox-marked' : 'checkbox-blank-outline'}
-                    size={wp(7)}
-                    color={(item.selected) ? colors.APPGREEN : colors.GRAY}
-                    onPress={() => this.toggleCheckbox(item, index)}
-                />
+                {/*<Icon*/}
+                {/*    name={(item.selected) ? 'checkbox-marked' : 'checkbox-blank-outline'}*/}
+                {/*    size={wp(7)}*/}
+                {/*    color={(item.selected) ? colors.APPGREEN : colors.GRAY}*/}
+                {/*    onPress={() => this.toggleCheckbox(item, index)}*/}
+                {/*/>*/}
 
                 <Text style={styles.checkboxTitle}>{item.title}</Text>
             </View>

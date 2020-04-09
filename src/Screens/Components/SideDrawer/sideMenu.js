@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import {boxShadow, colors, fontSizes, hp, wp} from '../../../Helper';
 import {CustomAlert2} from '../../Common';
-import Icon from'react-native-vector-icons/AntDesign';
+// import Icon from'react-native-vector-icons/AntDesign';
 import _ from 'lodash';
 import RNRestart from 'react-native-restart';
 import {StackActions, NavigationActions}  from 'react-navigation';
@@ -132,7 +132,7 @@ class SideMenu extends Component {
                         index: 0,
                         actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
                     })
-                    this.props.navigation.dispatch(resetAction); 
+                    this.props.navigation.dispatch(resetAction);
                 }
             })
         })
@@ -226,7 +226,7 @@ class SideMenu extends Component {
 
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('AppVedioDetailScreen')} style={[touchableView, {marginTop: 0, flexDirection: 'row'}]}>
                                 <Text style={styles.navItemStyle}>{'How to videos'}</Text>
-                                <Icon name={'playcircleo'} size={wp(4)} color={colors.APPGREEN} style={{marginHorizontal: wp(2)}} />
+                                {/*<Icon name={'playcircleo'} size={wp(4)} color={colors.APPGREEN} style={{marginHorizontal: wp(2)}} />*/}
                             </TouchableOpacity>
 
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('AddressList')} style={[touchableView, {marginTop: 0}]}>

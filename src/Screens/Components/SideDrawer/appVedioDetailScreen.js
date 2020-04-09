@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {FlatList, Text, View, BackHandler} from 'react-native';
 import {boxShadow, colors, fontSizes, hp, outerBoxShadow, wp} from '../../../Helper'
 import {AppButton, CustomHeader} from "../../Common";
-import Icon from "react-native-vector-icons/FontAwesome";
+// import Icon from "react-native-vector-icons/FontAwesome";
 
 const videoData = [{
     title: 'Your food (Spicy Noodle)\nwas arrived!!'
@@ -63,7 +63,7 @@ class AppVedioDetailScreen extends Component{
                         borderRightWidth: wp(0.5),
                         borderColor: colors.SILVER
                     }}>
-                        <Icon name={'user'} size={wp(5)} color={colors.APPBROWN} />
+                        {/*<Icon name={'user'} size={wp(5)} color={colors.APPBROWN} />*/}
                     </View>
 
                     <View style={{
@@ -90,7 +90,7 @@ class AppVedioDetailScreen extends Component{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Icon name={'chevron-right'} size={wp(4)} color={colors.BLACK} />
+                        {/*<Icon name={'chevron-right'} size={wp(4)} color={colors.BLACK} />*/}
                     </View>
                 </View>
             </View>

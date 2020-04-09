@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "245911937029",
+    "firebase_url": "https://quick-chef-firebase.firebaseio.com",
+    "project_id": "quick-chef-firebase",
+    "storage_bucket": "quick-chef-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245911937029:android:74bdb50e6945e9ef66bc6c",
+        "android_client_info": {
+          "package_name": "com.qk_chef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245911937029-ttvm9snn6gf3ppgkacqd8vdtqbqs05p0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk9ODpTR29UOhEGdgBiY6hD8jwelvbIKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245911937029-ttvm9snn6gf3ppgkacqd8vdtqbqs05p0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "245911937029-4rqfg6oldsej9ikqa94v173rujmc9pj9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.QK-Chef"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

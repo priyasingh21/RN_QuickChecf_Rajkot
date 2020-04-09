@@ -7,7 +7,7 @@ import {
     fontSizes
 } from '../../../Helper'
 import { CustomHeader, AppButton } from "../../Common";
-import Icon from 'react-native-vector-icons/Ionicons';
+// import Icon from 'react-native-vector-icons/Ionicons';
 
 class AddressList extends Component {
 
@@ -33,7 +33,7 @@ class AddressList extends Component {
                 <Text style={addressText}>
                     {`${address_type}\n${address_line1} ${address_line2}\n${area}${city}, ${state_abbr}-${zipCode}\n${country}`}
                 </Text>
-                <Icon name={'ios-arrow-forward'} color={colors.GRAY} size={wp(4)} />
+                {/*<Icon name={'ios-arrow-forward'} color={colors.GRAY} size={wp(4)} />*/}
             </View>
         )
     }
