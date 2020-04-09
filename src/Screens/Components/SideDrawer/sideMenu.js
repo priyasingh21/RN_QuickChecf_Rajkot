@@ -10,7 +10,8 @@ import {
     ImageBackground,
     Modal,
     AsyncStorage,
-    BackHandler
+    BackHandler,
+    ScrollView
 } from 'react-native';
 import {boxShadow, colors, fontSizes, hp, wp} from '../../../Helper';
 import {CustomAlert2} from '../../Common';
@@ -211,7 +212,7 @@ class SideMenu extends Component {
                     </View>
 
                     {/*bottom section*/}
-                    <View style={styles.navSectionStyle}>
+                    <ScrollView style={styles.navSectionStyle}>
                         <View>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('AboutUs')}
@@ -260,7 +261,9 @@ class SideMenu extends Component {
                                 <Text style={styles.navItemStyle}>{'Sign out'}</Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </ScrollView>
+
+
                     <Modal
                         animationType="none"
                         transparent

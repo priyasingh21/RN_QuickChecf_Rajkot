@@ -110,7 +110,6 @@ class MobileVerificationScreen extends Component {
         this.updateText('', 'error');
 
         if (verification_code && verification_code.length === 6 && verificationCodeResponse && (verificationCodeResponse.toString() === verification_code)) {
-            alert('aaaa')
             AsyncStorage.setItem('setVerificationCode', JSON.stringify({ type: 'phone', entered: true }), () => {
                 this.props.navigation.navigate('AppDrawer');
             })
