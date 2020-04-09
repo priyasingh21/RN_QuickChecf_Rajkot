@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {View, TouchableOpacity, Text, ImageBackground} from 'react-native';
 import { colors, hp, wp, fontSizes } from '../../../Helper';
 import { SmallAppButton } from '../../Common';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 class InitialScreen extends Component {
 

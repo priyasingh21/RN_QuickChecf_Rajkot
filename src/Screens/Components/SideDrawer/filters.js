@@ -11,7 +11,7 @@ import {
     distanceData,
     menuClassificationData
 } from '../../../Helper'
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AppButton, CustomHeader } from "../../Common";
 import { cuisineCountry, portionSize, markers, spicyMenu, menuAvailibility } from "../../../Helper";
 
@@ -92,12 +92,12 @@ class Filters extends Component {
     renderCheckBoxes = (item, index, type) => {
         return (
             <View style={{ flex: 1, flexDirection: 'row', marginVertical: wp(1) }}>
-                {/*<Icon*/}
-                {/*    name={(item.selected) ? 'checkbox-marked' : 'checkbox-blank-outline'}*/}
-                {/*    size={wp(7)}*/}
-                {/*    color={(item.selected) ? colors.APPGREEN : colors.GRAY}*/}
-                {/*    onPress={() => this.toggleCheckbox(item, index, type)}*/}
-                {/*/>*/}
+                <Icon
+                    name={(item.selected) ? 'checkbox-marked' : 'checkbox-blank-outline'}
+                    size={wp(7)}
+                    color={(item.selected) ? colors.APPGREEN : colors.GRAY}
+                    onPress={() => this.toggleCheckbox(item, index, type)}
+                />
                 <Text style={{ alignSelf: 'center', marginLeft: wp(2) }}>{item.title}</Text>
             </View>
         )

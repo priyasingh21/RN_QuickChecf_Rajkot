@@ -7,8 +7,8 @@ import {
     fontSizes
 } from '../../../Helper'
 import { CustomHeader, SmallAppButton } from "../../Common";
-// import Icon from 'react-native-vector-icons/AntDesign';
-// import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/AntDesign';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import MapView, { PROVIDER_GOOGLE, Polyline, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 
@@ -95,11 +95,11 @@ class OrderStatusMap extends Component {
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}>
-                            {/*<Icon*/}
-                            {/*    name={'star'}*/}
-                            {/*    size={wp(3.5)}*/}
-                            {/*    color={colors.STARYELLOW}*/}
-                            {/*/>*/}
+                            <Icon
+                                name={'star'}
+                                size={wp(3.5)}
+                                color={colors.STARYELLOW}
+                            />
                             <Text style={textStyle}>{'4.5'}</Text>
 
                         </View>
@@ -113,25 +113,6 @@ class OrderStatusMap extends Component {
                         borderRadius: 5,
                         overflow: 'hidden'
                     }}>
-                        {/* <MapView
-                            style={{ flex: 1 }}
-                            provider={PROVIDER_GOOGLE}
-                            initialRegion={{
-                                latitude: 37.78825,
-                                longitude: -122.4324,
-                                latitudeDelta: 0.0922,
-                                longitudeDelta: 0.0421,
-                            }}
-                        >
-                            <MapViewDirections
-                                origin={{latitude: 37.3318456, longitude: -122.0296002}}
-                                destination={{latitude: 37.771707, longitude: -122.4053769}}
-                                strokeWidth={3}
-                                strokeColor="hotpink"
-                                // apikey={GOOGLE_MAPS_APIKEY}
-                            />
-                        </MapView>
-                    */}
                         <MapView
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
@@ -163,7 +144,7 @@ class OrderStatusMap extends Component {
                                 strokeColor={colors.SKYBLUE}
                                 strokeColors={[
                                     colors.BLOODYRED,
-                                    colors.APPGREEN, // no color, creates a "long" gradient between the previous and next coordinate
+                                    colors.APPGREEN,
                                     colors.BURNTORANGE,
                                     colors.LIGHTRED,
                                     colors.LIGHTBRIGHTGREEN,
@@ -182,11 +163,11 @@ class OrderStatusMap extends Component {
                             }}>
                                 <Text style={textStyle}>{'1x Spicy Noodle'}</Text>
                                 <View style={{ flexDirection: 'row' }}>
-                                    {/*<Icon1*/}
-                                    {/*    name={'currency-inr'}*/}
-                                    {/*    size={wp(3.5)}*/}
-                                    {/*    color={colors.BLACK}*/}
-                                    {/*/>*/}
+                                    <Icon1
+                                        name={'currency-inr'}
+                                        size={wp(3.5)}
+                                        color={colors.BLACK}
+                                    />
                                     <Text style={[textStyle]}>{'30'}</Text>
                                 </View>
                             </View>
@@ -198,12 +179,12 @@ class OrderStatusMap extends Component {
                             }}>
                                 <Text style={textStyle}>{'Delivery'}</Text>
                                 <View style={{ flexDirection: 'row' }}>
-                                    {/*<Icon1*/}
-                                    {/*    name={'currency-inr'}*/}
-                                    {/*    size={wp(3.5)}*/}
-                                    {/*    color={colors.BLACK}*/}
-                                    {/*    size={wp(4)}*/}
-                                    {/*/>*/}
+                                    <Icon1
+                                        name={'currency-inr'}
+                                        size={wp(3.5)}
+                                        color={colors.BLACK}
+                                        size={wp(4)}
+                                    />
                                     <Text style={[textStyle]}>{'10'}</Text>
                                 </View>
                             </View>
@@ -216,11 +197,11 @@ class OrderStatusMap extends Component {
                                 <Text style={textStyle}>{'Discount'}</Text>
                                 <View style={{ flexDirection: 'row' }}>
                                     <Text style={[textStyle]}>{'-'}</Text>
-                                    {/*<Icon1*/}
-                                    {/*    name={'currency-inr'}*/}
-                                    {/*    size={wp(3.5)}*/}
-                                    {/*    color={colors.BLACK}*/}
-                                    {/*/>*/}
+                                    <Icon1
+                                        name={'currency-inr'}
+                                        size={wp(3.5)}
+                                        color={colors.BLACK}
+                                    />
                                     <Text style={[textStyle]}>{'5'}</Text>
                                 </View>
                             </View>
@@ -232,11 +213,11 @@ class OrderStatusMap extends Component {
                             }}>
                                 <Text style={textStyle}>{'Total'}</Text>
                                 <View style={{ flexDirection: 'row' }}>
-                                    {/*<Icon1*/}
-                                    {/*    name={'currency-inr'}*/}
-                                    {/*    size={wp(3.5)}*/}
-                                    {/*    color={colors.BLACK}*/}
-                                    {/*/>*/}
+                                    <Icon1
+                                        name={'currency-inr'}
+                                        size={wp(3.5)}
+                                        color={colors.BLACK}
+                                    />
                                     <Text style={[textStyle]}>{'35'}</Text>
                                 </View>
                             </View>
@@ -259,11 +240,11 @@ class OrderStatusMap extends Component {
                                         alignItems: 'center',
                                         backgroundColor: colors.OFFGREEN
                                     }}>
-                                        {/*<Icon*/}
-                                        {/*    name={'star'}*/}
-                                        {/*    color={colors.APPBROWN}*/}
-                                        {/*    size={hp(2.5)}*/}
-                                        {/*/>*/}
+                                        <Icon
+                                            name={'star'}
+                                            color={colors.APPBROWN}
+                                            size={hp(2.5)}
+                                        />
                                     </View>
 
                                     <View style={{
@@ -290,11 +271,11 @@ class OrderStatusMap extends Component {
                                         alignItems: 'center',
                                         backgroundColor: colors.OFFGREEN
                                     }}>
-                                        {/*<Icon*/}
-                                        {/*    name={'star'}*/}
-                                        {/*    color={colors.APPBROWN}*/}
-                                        {/*    size={hp(2.5)}*/}
-                                        {/*/>*/}
+                                        <Icon
+                                            name={'star'}
+                                            color={colors.APPBROWN}
+                                            size={hp(2.5)}
+                                        />
                                     </View>
 
                                     <View style={{
@@ -322,11 +303,11 @@ class OrderStatusMap extends Component {
                                         alignItems: 'center',
                                         backgroundColor: colors.OFFGREEN
                                     }}>
-                                        {/*<Icon*/}
-                                        {/*    name={'star'}*/}
-                                        {/*    color={colors.APPGREEN}*/}
-                                        {/*    size={hp(2.5)}*/}
-                                        {/*/>*/}
+                                        <Icon
+                                            name={'star'}
+                                            color={colors.APPGREEN}
+                                            size={hp(2.5)}
+                                        />
                                     </View>
 
                                     <View style={{
@@ -352,11 +333,11 @@ class OrderStatusMap extends Component {
                                         alignItems: 'center',
                                         backgroundColor: colors.LIGHTGRAY
                                     }}>
-                                        {/*<Icon*/}
-                                        {/*    name={'star'}*/}
-                                        {/*    color={colors.APPBROWN}*/}
-                                        {/*    size={hp(2.5)}*/}
-                                        {/*/>*/}
+                                        <Icon
+                                            name={'star'}
+                                            color={colors.APPBROWN}
+                                            size={hp(2.5)}
+                                        />
                                     </View>
 
                                     <View style={{

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, BackHandler } from 'react-native';
 import { boxShadow, colors, hp, wp, fontSizes } from '../../../Helper'
 import { CustomHeader, ProcessIndicator } from "../../Common";
-// import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/AntDesign'
 
 class ChefScreen extends Component {
 
@@ -86,20 +86,20 @@ class ChefScreen extends Component {
                 </View>
 
                 <View style={starContainer}>
-                    {/*<Icon*/}
-                    {/*    name={'star'}*/}
-                    {/*    size={wp(3.5)}*/}
-                    {/*    color={colors.STARYELLOW}*/}
-                    {/*/>*/}
+                    <Icon
+                        name={'star'}
+                        size={wp(3.5)}
+                        color={colors.STARYELLOW}
+                    />
                     <Text style={textStyle}>{4.5}</Text>
                 </View>
 
                 <View style={tagContainer}>
-                    {/*<Icon*/}
-                    {/*    name={'tag'}*/}
-                    {/*    size={wp(4)}*/}
-                    {/*    color={colors.BLOODYRED}*/}
-                    {/*/>*/}
+                    <Icon
+                        name={'tag'}
+                        size={wp(4)}
+                        color={colors.BLOODYRED}
+                    />
                 </View>
             </View>
         )

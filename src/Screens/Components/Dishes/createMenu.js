@@ -14,7 +14,7 @@ import {
     markers,
 } from '../../../Helper'
 import { AppButton, CustomHeader, ActionSheet } from "../../Common";
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as ImagePicker from 'react-native-image-crop-picker';
 
 const spicyMenu = ['Mild', 'Medium', 'Hot'];
@@ -94,12 +94,12 @@ class CreateMenu extends Component {
     renderCheckBoxes = (item, index, type) => {
         return (
             <View style={{ flex: 1, flexDirection: 'row', marginVertical: wp(1) }}>
-                {/*<Icon*/}
-                {/*    name={(item.selected) ? 'checkbox-marked' : 'checkbox-blank-outline'}*/}
-                {/*    size={wp(7)}*/}
-                {/*    color={(item.selected) ? colors.APPGREEN : colors.GRAY}*/}
-                {/*    onPress={() => this.toggleCheckbox(item, index, type)}*/}
-                {/*/>*/}
+                <Icon
+                    name={(item.selected) ? 'checkbox-marked' : 'checkbox-blank-outline'}
+                    size={wp(7)}
+                    color={(item.selected) ? colors.APPGREEN : colors.GRAY}
+                    onPress={() => this.toggleCheckbox(item, index, type)}
+                />
                 <Text style={{ alignSelf: 'center', marginLeft: wp(2) }}>{item.title}</Text>
             </View>
         )

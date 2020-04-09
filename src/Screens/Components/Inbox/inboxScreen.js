@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text, Image, FlatList, BackHandler} from 'react-native';
 import {colors, hp, wp, boxShadow, outerBoxShadow, fontSizes, SCREEN_HEIGHT} from '../../../Helper'
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppButton, CustomHeader} from "../../Common";
 
 const inboxData=[{
@@ -48,7 +48,7 @@ class InboxScreen extends Component{
                         borderRightWidth: wp(0.5),
                         borderColor: colors.SILVER
                     }}>
-                        {/*<Icon name={'user'} size={wp(5)} color={colors.APPBROWN} />*/}
+                        <Icon name={'user'} size={wp(5)} color={colors.APPBROWN} />
                     </View>
 
                     <View style={{
@@ -65,7 +65,7 @@ class InboxScreen extends Component{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        {/*<Icon name={'chevron-right'} size={wp(4)} color={colors.BLACK} />*/}
+                        <Icon name={'chevron-right'} size={wp(4)} color={colors.BLACK} />
                     </View>
                 </View>
             </View>

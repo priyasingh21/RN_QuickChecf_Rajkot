@@ -8,7 +8,7 @@ import {
     boxShadow
 } from '../../../Helper'
 import { CustomHeader } from "../../Common";
-// import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 class OrderDetail extends Component {
 
@@ -45,11 +45,11 @@ class OrderDetail extends Component {
 
                 <View style={detailContainer} >
                     <TouchableOpacity style={{flex: 1, alignItems: 'flex-end'}} onPress={() => this.props.navigation.navigate('Chat')}>
-                            {/*<Icon*/}
-                            {/*    name={'message1'}*/}
-                            {/*    size={wp(10)}*/}
-                            {/*    color={colors.APPGREEN}*/}
-                            {/*/>*/}
+                            <Icon
+                                name={'message1'}
+                                size={wp(10)}
+                                color={colors.APPGREEN}
+                            />
                     </TouchableOpacity>
                 </View>
             </View>

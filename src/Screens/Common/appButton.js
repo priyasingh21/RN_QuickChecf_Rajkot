@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { colors, wp, fontSizes, boxShadow } from '../../Helper';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class AppButton extends Component {
 
@@ -15,12 +15,12 @@ class AppButton extends Component {
                         source={require('../../../assets/googleLogo.png')}
                         style={{height: wp(5), width: wp(5)}}
                     />
-                    || null
-                    // <Icon
-                    //     name={iconTitle && iconTitle || ''}
-                    //     size={wp(9)}
-                    //     color={iconColor && iconColor || colors.RED}
-                    // />
+                    ||
+                    <Icon
+                        name={iconTitle && iconTitle || ''}
+                        size={wp(9)}
+                        color={iconColor && iconColor || colors.RED}
+                    />
                 }
                 <Text style={[titleText,{color: textColor && textColor || colors.BLACK,}]}>
                     {buttonText && buttonText || 'Sign in with Google'}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, StyleSheet , TouchableOpacity, TextInput, StatusBar} from 'react-native';
 import {colors, wp, fontSizes, hp} from '../../Helper';
-// import Icon from 'react-native-vector-icons/Ionicons';
-// import Icon1 from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon1 from 'react-native-vector-icons/Entypo';
 
 class CustomHeader extends Component {
 
@@ -71,11 +71,11 @@ class CustomHeader extends Component {
                     <TouchableOpacity
                         onPress={() => this.onBackPress(isDrawerIcon)}
                         style={arrowContainer}>
-                        {/*<Icon*/}
-                        {/*    name={(isBack) && 'md-arrow-back' || 'ios-menu'}*/}
-                        {/*    size={wp(7)}*/}
-                        {/*    color={colors.WHITE}*/}
-                        {/*/>*/}
+                        <Icon
+                            name={(isBack) && 'md-arrow-back' || 'ios-menu'}
+                            size={wp(7)}
+                            color={colors.WHITE}
+                        />
                     </TouchableOpacity>
                     <Text style={titleTextStyle}>{menuTitle}</Text>
                 </View>}
@@ -84,12 +84,12 @@ class CustomHeader extends Component {
                     (isHome) && <View
                         style={container}>
                         <View style={homeView}>
-                            {/*<Icon*/}
-                            {/*    style={{flex: 1, alignSelf: 'center'}}*/}
-                            {/*    name={'md-search'}*/}
-                            {/*    size={hp(3)}*/}
-                            {/*    color={colors.SKYBLUE}*/}
-                            {/*/>*/}
+                            <Icon
+                                style={{flex: 1, alignSelf: 'center'}}
+                                name={'md-search'}
+                                size={hp(3)}
+                                color={colors.SKYBLUE}
+                            />
                             <TextInput
                                 style={{
                                     padding: wp(2),
@@ -108,12 +108,12 @@ class CustomHeader extends Component {
                     <View  style={[container, {flexDirection: 'column'}]}>
                         <View style={container}>
                             <View style={[searchView, {marginTop: (isChefScreen) ? wp(2) : wp(3.5)}]}>
-                                {/*<Icon*/}
-                                {/*    style={{flex: 1, alignSelf: 'center'}}*/}
-                                {/*    name={'md-search'}*/}
-                                {/*    size={hp(3)}*/}
-                                {/*    color={colors.SKYBLUE}*/}
-                                {/*/>*/}
+                                <Icon
+                                    style={{flex: 1, alignSelf: 'center'}}
+                                    name={'md-search'}
+                                    size={hp(3)}
+                                    color={colors.SKYBLUE}
+                                />
 
                                 <TextInput
                                     style={{
@@ -140,12 +140,12 @@ class CustomHeader extends Component {
                                     borderRadius: wp(3),
                                     paddingHorizontal: wp(5)
                                 }}>
-                                    {/*<Icon1*/}
-                                    {/*    style={{flex: 1, alignSelf: 'center'}}*/}
-                                    {/*    name={'location-pin'}*/}
-                                    {/*    size={hp(3)}*/}
-                                    {/*    color={colors.BLOODYRED}*/}
-                                    {/*/>*/}
+                                    <Icon1
+                                        style={{flex: 1, alignSelf: 'center'}}
+                                        name={'location-pin'}
+                                        size={hp(3)}
+                                        color={colors.BLOODYRED}
+                                    />
 
                                     <TextInput
                                         style={{

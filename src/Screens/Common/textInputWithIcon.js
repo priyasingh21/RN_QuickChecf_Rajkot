@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import {colors, hp, wp} from "../../Helper";
-// import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-// import MaterialCommunityIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons'
-// import OcticonsIcon from 'react-native-vector-icons/Octicons'
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIconsIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import OcticonsIcon from 'react-native-vector-icons/Octicons'
 
 class CustomTextInput extends Component{
 
@@ -17,24 +17,23 @@ class CustomTextInput extends Component{
                     (iconFileName) && <View style={iconView}>
                         {
                             (iconFileName === 'FontAwesomeIcon') &&
-                                null
-                            // <FontAwesomeIcon
-                            //     name={iconName && iconName}
-                            //     color={colors.LIGHTGRAY}
-                            //     size={wp(6)}
-                            // />
-                            || (iconFileName === 'MaterialCommunityIconsIcon') && null
-                            // <MaterialCommunityIconsIcon
-                            //     name={iconName && iconName}
-                            //     color={colors.LIGHTGRAY}
-                            //     size={wp(6)}
-                            // />
-                            || (iconFileName === 'OcticonsIcon') && null
-                            // <OcticonsIcon
-                            //     name={iconName && iconName}
-                            //     color={colors.LIGHTGRAY}
-                            //     size={wp(6)}
-                            // />
+                            <FontAwesomeIcon
+                                name={iconName && iconName}
+                                color={colors.LIGHTGRAY}
+                                size={wp(6)}
+                            />
+                            || (iconFileName === 'MaterialCommunityIconsIcon') &&
+                            <MaterialCommunityIconsIcon
+                                name={iconName && iconName}
+                                color={colors.LIGHTGRAY}
+                                size={wp(6)}
+                            />
+                            || (iconFileName === 'OcticonsIcon') &&
+                            <OcticonsIcon
+                                name={iconName && iconName}
+                                color={colors.LIGHTGRAY}
+                                size={wp(6)}
+                            />
                         }
                     </View>
                 }
