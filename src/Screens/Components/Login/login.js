@@ -22,7 +22,6 @@ class Login extends Component {
             if(this.props !== nextProps) {
                 const {User} = nextProps;
                 const {user} = User;
-                debugger
             }
         }
 

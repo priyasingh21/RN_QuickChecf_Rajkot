@@ -17,7 +17,6 @@ AsyncStorage.getItem('loginData').then(usr => {
 
 const getAllCuisine = () => {
     if(api_token) {
-        debugger
         return (dispatch, getState) => {
             processing(dispatch, true)
             try {

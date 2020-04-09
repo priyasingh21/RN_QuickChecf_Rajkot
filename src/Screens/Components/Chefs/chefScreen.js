@@ -120,7 +120,7 @@ class ChefScreen extends Component {
         let navigationParam = navigation.state && navigation.state.params && navigation.state.params.displayKey || '';
         return (
             <View style={container}>
-                <ProcessIndicator color={colors.WHITE} isProcessing={chef.length > 0 ? false : true} />
+                <ProcessIndicator color={colors.WHITE} isProcessing={chef.length <= 0} />
                 <View style={{ height: hp(12) }}>
                     <CustomHeader
                         navigation={this.props.navigation}

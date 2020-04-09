@@ -9,7 +9,7 @@ import {
 import Common from './common';
 
 import {getAllCuisine} from './cuisineActions';
-import {getAllMenuTypes} from './menuActions';
+import {getAllMenuTypes, getAllMenu} from './menuActions';
 import {getAllForYouTypes} from './forYouActions';
 import {setCummunicationPreferenceData} from './communicationPreferenceAction';
 
@@ -23,5 +23,6 @@ export {
     Common,
     getCountryList,
     getAllForYouTypes,
-    setCummunicationPreferenceData
+    setCummunicationPreferenceData,
+    getAllMenu
 }

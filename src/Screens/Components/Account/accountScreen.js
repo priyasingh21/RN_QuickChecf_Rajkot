@@ -84,7 +84,6 @@ class AccountScreen extends Component {
         const { container, detailContainerMainView, profileImageView, textStyle, appButtonView, chefMenuView,
             chefMenuContainer, chefMenuTextStyle } = styles;
         const { country_code, email, mobile, profile_image, temp_image, name, location, is_chef, is_customer } = user
-        debugger
         let safeArea = {
             top: 20
         }

@@ -8,15 +8,15 @@ let api_token = '';
 let user_id = '';
 AsyncStorage.getItem('loginData').then(usr => {
     if(usr) {
-        api_token = JSON.parse(usr).api_token;
-        user_id = JSON.parse(usr).id;
+        api_token = JSON.parse(usr).data[0].api_token;
+        user_id = JSON.parse(usr).data[0].id;
     }
 }).catch(e => {
 
 })
 
 const signUp = (data = {}) => {
-    const { name, email, password, confirmPassword, mobile, country_code } = data;
+    const { name, email, password, confirmPassword, mobile, country_code, country_id } = data;
 
     let formData = new FormData();
     formData.append('name', name);
@@ -25,6 +25,7 @@ const signUp = (data = {}) => {
     formData.append('password', password);
     formData.append('password_confirmation', confirmPassword);
     formData.append('country_code', country_code);
+    formData.append('country_id', country_id);
 
     return (dispatch, getState) => {
         processing(dispatch, true)
@@ -138,35 +139,37 @@ const selectLanguage = languageData => {
 };
 
 const getAllChefs = () => {
-
-    return (dispatch, getState) => {
-        processing(dispatch, true)
-        return fetch(BASE_URL + API_ENDPOINT.All_CHEFS, {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + api_token
-            }
-        })
-            .then(response => response.json())
-            .then(res => {
-                if (res) {
-                    processing(dispatch)
-                    dispatch({
-                        payload: res,
-                        type: GET_ALL_CHEF
-                    });
-                } else {
-                    processing(dispatch)
+    if(api_token){
+        return (dispatch, getState) => {
+            processing(dispatch, true)
+            console.log("URL ======> ", BASE_URL + API_ENDPOINT.All_CHEFS)
+            return fetch(BASE_URL + API_ENDPOINT.All_CHEFS, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
                 }
             })
-            .catch(err => {
-                processing(dispatch)
-                dispatch({
-                    payload: {},
-                    type: All_CHEFS
+                .then(response => response.json())
+                .then(res => {
+                    if (res) {
+                        processing(dispatch)
+                        dispatch({
+                            payload: res,
+                            type: GET_ALL_CHEF
+                        });
+                    } else {
+                        processing(dispatch)
+                    }
+                })
+                .catch(err => {
+                    processing(dispatch)
+                    dispatch({
+                        payload: {},
+                        type: All_CHEFS
+                    });
                 });
-            });
-    };
+        };
+    }
 }
 
 const getCountryList = () => {

@@ -22,7 +22,6 @@ export default (state = INITIAL_STATE, action) => {
       }
 
         case CUISINE_DATA: {
-            debugger
             return {
                 ...state,
                 cuisineData: payload

@@ -48,6 +48,7 @@ class Registration extends Component {
                     password: '',
                     selectedCountry: '',
                     confirmPassword: '',
+                    country_id: '',
                     email: '',
                     role: '',
                     error: '',
@@ -62,8 +63,9 @@ class Registration extends Component {
     }
 
     onSignUpClick = () => {
-        const { name, mobile, password, confirmPassword, email, selectedCountry } = this.state;
+        const { name, mobile, password, confirmPassword, email, selectedCountry, country_code_Arr } = this.state;
         const { handleLocalAction, localActions } = this.props;
+        let selectedCountryData = country_code_Arr.filter((data) => data.country_code === selectedCountry)
 
         if (name === '') {
             this.updateText('Please enter name', 'error');
@@ -138,7 +140,7 @@ class Registration extends Component {
         }
 
         this.updateText('', 'error');
-        handleLocalAction({ type: localActions.SIGN_UP_USER, data: { name, mobile, password, confirmPassword, email, country_code: selectedCountry } })
+        handleLocalAction({ type: localActions.SIGN_UP_USER, data: { name, mobile, password, confirmPassword, email, country_code: selectedCountry, country_id: selectedCountryData[0].id} })
     }
 
     hideBanner = (isSuccessBanner = false) => {
@@ -158,7 +160,7 @@ class Registration extends Component {
                     index: 0,
                     actions: [NavigationActions.navigate({ routeName: 'Login' })],
                 })
-                this.props.navigation.dispatch(resetAction); 
+                this.props.navigation.dispatch(resetAction);
             })
         }, 3000);
     }
@@ -178,11 +180,11 @@ class Registration extends Component {
 
     render() {
 
-        const { error, showBanner, country_code_Arr, isRegisterSuccess } = this.state;
+        const { error, showBanner, country_code_Arr, isRegisterSuccess, selectedCountry } = this.state;
         const { User } = this.props;
         const { processing } = User;
-        let allCountryData = country_code_Arr.length > 0 && country_code_Arr.map(i => i.country_code);
-        let country_list = allCountryData.length > 0 && allCountryData.filter((item, i, ar) => ar.indexOf(item) === i);
+        let allCountryCodeData = country_code_Arr.length > 0 && country_code_Arr.map(i => i.country_code);
+        let country_list = allCountryCodeData.length > 0 && allCountryCodeData.filter((item, i, ar) => ar.indexOf(item) === i);
 
         let safeArea = {
             top: 20
@@ -301,7 +303,10 @@ class Registration extends Component {
                                 secureText={true}
                             />
 
-                            <SmallAppButton btnStyle={{ width: wp(65), marginTop: wp(5) }} onPress={this.onSignUpClick} btnTitle={'Register'} />
+                            <SmallAppButton
+                                btnStyle={{ width: wp(65), marginTop: wp(5) }}
+                                onPress={() => this.onSignUpClick()}
+                                btnTitle={'Register'} />
 
                             <Text
                                 onPress={() => {
@@ -319,7 +324,7 @@ class Registration extends Component {
                                             index: 0,
                                             actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
                                         })
-                                        this.props.navigation.dispatch(resetAction); 
+                                        this.props.navigation.dispatch(resetAction);
                                     })
                                 }}
                                 style={{

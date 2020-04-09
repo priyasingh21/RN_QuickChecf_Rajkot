@@ -1,4 +1,4 @@
-import {FOR_YOU_DATA, MENU_TYPE_DATA} from './types';
+import {FOR_YOU_DATA, MENU_TYPE_DATA, MENUS} from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants'
 import { processing, status } from './utility';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -40,6 +40,35 @@ const getAllMenuTypes = () => {
     }
 };
 
+const getAllMenu = (data = {}) => {
+    if (api_token) {
+        let formData = new FormData();
+        formData.append('data', data);
+        return async (dispatch) => {
+            processing(dispatch, true)
+            fetch(BASE_URL + API_ENDPOINT.MENU, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
+                },
+                body: formData
+            })  .then(response => response.json())
+                .then(res => {
+                    processing(dispatch);
+                    if (res) {
+                        dispatch({
+                            payload: res,
+                            type: MENUS
+                        });
+                    }
+                }).catch(e => {
+                processing(dispatch)
+            })
+        };
+    }
+};
+
 export {
-    getAllMenuTypes
+    getAllMenuTypes,
+    getAllMenu
 }

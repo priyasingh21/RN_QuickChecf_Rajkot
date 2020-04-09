@@ -66,14 +66,6 @@ class Splashscreen extends Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                    <View style={{
-                        height: wp(1),
-                        width: wp(35),
-                        backgroundColor: colors.WHITE,
-                        borderRadius: wp(5),
-                        position: 'absolute',
-                        bottom: hp(2)
-                    }} />
                 </ImageBackground>
             </View>
         )
