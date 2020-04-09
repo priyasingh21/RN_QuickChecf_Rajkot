@@ -9,12 +9,16 @@ export const localActions = {};
 const mapStateToProps = (state) => {
 
     const {User} = state
-    
-    return {User};
+    return {
+        localActions,
+        User
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        handleLocalAction: (actionType, navigation) => handleLocalAction(dispatch, actionType, navigation)
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountScreen);

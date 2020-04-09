@@ -18,7 +18,7 @@ class AccountScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: {},
+            user: props && props.User && props.User.user && props.User.user.data && props.User.user.data.length > 0 && props.User.user.data[0] || {},
             showBanner: false,
             bannerMessage: ''
         }
@@ -27,20 +27,22 @@ class AccountScreen extends Component {
 
     componentDidMount() {
         AsyncStorage.getItem('loginData').then(res => {
-            if (res && JSON.parse(res).id) {
+            if (res && JSON.parse(res).success) {
                 this.setState({
-                    user: JSON.parse(res)
+                    user: JSON.parse(res).data[0]
                 })
             }
         }).catch(e => { })
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
+        const {User} = nextProps;
+        const {user} = User
         if(this.props !== nextProps) {
             AsyncStorage.getItem('loginData').then(res => {
-                if (res && JSON.parse(res).id) {
+                if (res && JSON.parse(res).success) {
                     this.setState({
-                        user: JSON.parse(res)
+                        user: JSON.parse(res).data[0]
                     })
                 }
             }).catch(e => { })
@@ -82,6 +84,7 @@ class AccountScreen extends Component {
         const { container, detailContainerMainView, profileImageView, textStyle, appButtonView, chefMenuView,
             chefMenuContainer, chefMenuTextStyle } = styles;
         const { country_code, email, mobile, profile_image, temp_image, name, location, is_chef, is_customer } = user
+        debugger
         let safeArea = {
             top: 20
         }

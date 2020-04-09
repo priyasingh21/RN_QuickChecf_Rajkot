@@ -33,7 +33,7 @@ class SideMenu extends Component {
             selectedIndex: langData && langData === 'en' ? 0 : (props.appLanguage && langData && langData === 'ar') ? 1 : 2,
             oldLanguage : _.cloneDeep(props.appLanguage),
             isAlertVisible: false,
-            user: props && props.User && props.User.user && props.User.user.data && props.User.user.data.length > 0 && props.User.user.data || {}
+            user: props && props.User && props.User.user && props.User.user.data && props.User.user.data.length > 0 && props.User.user.data[0] || {}
         }
         BackHandler.addEventListener('backHandler', this.handleDeviceBackButton)
     }
@@ -48,8 +48,6 @@ class SideMenu extends Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        const {User} = nextProps;
-        const {user} = User
         if(this.props !== nextProps) {
             AsyncStorage.getItem('loginData').then(res => {
                 if (res && JSON.parse(res).success) {
@@ -142,7 +140,7 @@ class SideMenu extends Component {
     render() {
         const { touchableView, headerView} = styles;
         const { modalVisible, selectedIndex, user } = this.state;
-        const {area, country_code, email, mobile, profile_image, temp_image, username, role, name, location} = user
+        const {area, country_code, email, mobile, profile_image, temp_image, name} = user;
         return (
             <SafeAreaView style={{flex:1, backgroundColor: 'white'}}>
                 <View style={{justifyContent: 'space-between'}}>
