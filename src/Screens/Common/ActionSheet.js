@@ -306,20 +306,20 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.small,
     color: colors.GRAY
   },
-  deleteButtonText: {
-    color: colors.BLACK,
-    lineHeight: 25,
-    textAlign: 'center'
-  },
-  deleteButtonContainer: {
-    backgroundColor: colors.WHITE,
-    paddingVertical: hp('2%'),
-    alignItems: 'center'
-  },
-  buttonText: {
-    fontSize: fontSizes.medium,
-    color: colors.BLACK
-  }
+  // deleteButtonText: {
+  //   color: colors.BLACK,
+  //   lineHeight: 25,
+  //   textAlign: 'center'
+  // },
+  // deleteButtonContainer: {
+  //   backgroundColor: colors.WHITE,
+  //   paddingVertical: hp('2%'),
+  //   alignItems: 'center'
+  // },
+  // buttonText: {
+  //   fontSize: fontSizes.medium,
+  //   color: colors.BLACK
+  // }
 })
 
 export default ActionSheet

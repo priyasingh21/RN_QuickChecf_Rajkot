@@ -9,7 +9,6 @@ import {
     View,
     ImageBackground,
     Modal,
-    AsyncStorage,
     BackHandler,
     ScrollView
 } from 'react-native';
@@ -19,6 +18,7 @@ import Icon from'react-native-vector-icons/AntDesign';
 import _ from 'lodash';
 import RNRestart from 'react-native-restart';
 import {StackActions, NavigationActions}  from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const languageAfterLogin = ['english', 'arabic', 'spanish'];
 
@@ -33,7 +33,7 @@ class SideMenu extends Component {
             selectedIndex: langData && langData === 'en' ? 0 : (props.appLanguage && langData && langData === 'ar') ? 1 : 2,
             oldLanguage : _.cloneDeep(props.appLanguage),
             isAlertVisible: false,
-            user: {}
+            user: props && props.User && props.User.user && props.User.user.data && props.User.user.data.length > 0 && props.User.user.data || {}
         }
         BackHandler.addEventListener('backHandler', this.handleDeviceBackButton)
     }
@@ -48,11 +48,13 @@ class SideMenu extends Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
+        const {User} = nextProps;
+        const {user} = User
         if(this.props !== nextProps) {
             AsyncStorage.getItem('loginData').then(res => {
-                if (res && JSON.parse(res).id) {
+                if (res && JSON.parse(res).success) {
                     this.setState({
-                        user: JSON.parse(res)
+                        user: JSON.parse(res).data[0]
                     })
                 }
             }).catch(e => { })
@@ -127,15 +129,12 @@ class SideMenu extends Component {
             this.props.navigation.closeDrawer();
             AsyncStorage.setItem('setVerificationCode', JSON.stringify({type: '', entered: ''}), () => {
                 handleLocalAction({ type: localActions.LOGOUT});
-                AsyncStorage.getItem('loginData').then(res => {
-                    if(JSON.parse(res) === null) {
+                AsyncStorage.setItem('loginData', '');
                         let resetAction = StackActions.reset({
                             index: 0,
                             actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
                         })
                         this.props.navigation.dispatch(resetAction);
-                    }
-                })
             })
         })
     }
@@ -212,7 +211,7 @@ class SideMenu extends Component {
                     </View>
 
                     {/*bottom section*/}
-                    <ScrollView style={styles.navSectionStyle}>
+                    <ScrollView  showsVerticalScrollIndicator={false} style={[styles.navSectionStyle]}>
                         <View>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('AboutUs')}
@@ -380,6 +379,8 @@ const styles = StyleSheet.create({
     },
     navSectionStyle: {
         padding: wp('10%'),
+        height: hp(67),
+        paddingBottom: wp(20),
     },
     vwImage: {
         width: '100%',

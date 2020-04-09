@@ -20,8 +20,9 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         status: action.payload
       }
-      
+
         case CUISINE_DATA: {
+            debugger
             return {
                 ...state,
                 cuisineData: payload

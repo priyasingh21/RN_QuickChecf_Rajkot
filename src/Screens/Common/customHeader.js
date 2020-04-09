@@ -39,6 +39,7 @@ class CustomHeader extends Component {
             isAddAddress,
             isOrderStatusMap,
             isOrderList,
+            drawerwithSearch,
             isOrderDetail,
             isChat
         } = this.props;
@@ -65,7 +66,7 @@ class CustomHeader extends Component {
         return(
             <SafeAreaView style={{flex: 1}}>
 
-                { (isBack || isDrawerIcon) &&
+                { ((isBack || isDrawerIcon) && !drawerwithSearch ) &&
                     <View
                     style={[container, {justifyContent: (isBack || isDrawerIcon) ? 'flex-start': 'center'}]}>
                     <TouchableOpacity
@@ -81,8 +82,18 @@ class CustomHeader extends Component {
                 </View>}
 
                 {
-                    (isHome) && <View
-                        style={container}>
+                    (isHome && isDrawerIcon) &&
+                    <View style={[container, {flexDirection: 'row'}]}>
+                        <TouchableOpacity
+                            onPress={() => this.onBackPress(isDrawerIcon)}
+                            style={[arrowContainer, {alignSelf: 'center'}]}>
+                            <Icon
+                                style={{alignSelf: 'center'}}
+                                name={'ios-menu'}
+                                size={hp(6)}
+                                color={colors.WHITE}
+                            />
+                        </TouchableOpacity>
                         <View style={homeView}>
                             <Icon
                                 style={{flex: 1, alignSelf: 'center'}}
@@ -181,7 +192,7 @@ const styles = StyleSheet.create({
         width: wp(10),
         marginRight: wp(2),
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     titleTextStyle: {
         color: colors.WHITE,

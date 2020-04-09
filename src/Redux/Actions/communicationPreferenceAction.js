@@ -8,8 +8,8 @@ let user_id = '';
 
 AsyncStorage.getItem('loginData').then(usr => {
     if (usr) {
-        api_token = JSON.parse(usr).api_token;
-        user_id = JSON.parse(usr).id;
+        api_token = JSON.parse(usr).data[0].api_token;
+        user_id = JSON.parse(usr).data[0].id;
     }
 }).catch(e => {
 

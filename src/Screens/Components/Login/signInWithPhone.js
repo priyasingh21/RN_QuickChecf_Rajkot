@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Image, ImageBackground, AsyncStorage, Keyboard } from 'react-native';
+import { View, Text, TextInput, Image, ImageBackground, Keyboard } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { colors, hp, wp, fontSizes, boxShadow } from '../../../Helper';
 import { SmallAppButton, DropDownMenu, CustomTextInput, Banner, CustomAlert, ProcessIndicator } from '../../Common';
 

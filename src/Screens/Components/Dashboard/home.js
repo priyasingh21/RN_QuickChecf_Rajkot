@@ -33,7 +33,7 @@ class Home extends Component {
 
     UNSAFE_componentWillReceiveProps(nextProps) {
         const {forYouCategory, menuCategoryData, cuisineData} = this.state;
-        
+
         if (nextProps.Cuisine && nextProps.Cuisine.cuisineData && JSON.stringify(cuisineData) !== JSON.stringify(nextProps.Cuisine.cuisineData)) {
             if(nextProps.Cuisine.cuisineData && nextProps.Cuisine.cuisineData.success) {
                 this.setState({ cuisineData: nextProps.Cuisine.cuisineData.data })
@@ -138,10 +138,12 @@ class Home extends Component {
             <View style={container}>
                 <ProcessIndicator color={colors.WHITE} isProcessing={processing} />
                 <View style={container}>
-                    <View style={{ height: hp(12) }}>
+                    <View style={{ height: hp(12), flexDirection: 'row' }}>
                         <CustomHeader
                             navigation={this.props.navigation}
                             isHome={true}
+                            isDrawerIcon={true}
+                            drawerwithSearch={true}
                         />
                     </View>
 

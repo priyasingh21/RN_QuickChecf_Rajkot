@@ -78,12 +78,11 @@ const signIn = (data = {}) => {
                 .then(res => {
                     processing(dispatch);
                     if (res && res.success) {
-                        AsyncStorage.setItem('loginData', JSON.stringify(res), (r) => {
-                            dispatch({
-                                payload: res,
-                                type: LOGIN_CHEF
-                            });
-                        })
+                        AsyncStorage.setItem('loginData', JSON.stringify(res), (r) => {})
+                        dispatch({
+                            payload: res,
+                            type: LOGIN_CHEF
+                        });
                     } else {
                         if (res && res.data === 401) {
                             processing(dispatch)
@@ -142,12 +141,11 @@ const getAllChefs = () => {
 
     return (dispatch, getState) => {
         processing(dispatch, true)
-        // return fetch(BASE_URL + API_ENDPOINT.All_CHEFS + '?user_id=' + user_id + '&latitude=' + location.latitude + '&longitude=' + location.longitude + '&api_token=' + api_token, {
         return fetch(BASE_URL + API_ENDPOINT.All_CHEFS, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + api_token
-              }
+            }
         })
             .then(response => response.json())
             .then(res => {

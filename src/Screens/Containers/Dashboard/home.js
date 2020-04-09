@@ -32,7 +32,6 @@ const mapStateToProps = (state) => {
     const { processing: menuProcessing, status: menuStatus } = MenuCategory;
     const { processing: foryouProcessing, status: foryouStatus } = ForYouCategory;
     const { processing: cuisineProcessing, status: cuisineStatus } = Cuisine;
-
     return {
         localActions,
         User,
