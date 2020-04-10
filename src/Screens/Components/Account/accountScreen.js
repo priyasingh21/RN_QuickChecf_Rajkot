@@ -192,7 +192,7 @@ class AccountScreen extends Component {
                         }
 
                         {
-                            (!is_chef) &&
+                            (is_chef) &&
                             <View style={chefMenuContainer}>
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.navigate('CreateMenu')}

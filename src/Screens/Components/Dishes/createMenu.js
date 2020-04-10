@@ -42,6 +42,20 @@ class CreateMenu extends Component {
         BackHandler.addEventListener('backHandler', this.handleDeviceBackButton)
     }
 
+    componentDidMount(){
+        const { handleLocalAction, localActions, navigation } = this.props;
+        handleLocalAction({ type: localActions.GET_ALL_TAGS_SUBTAGS })
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps){
+        // alert(JSON.stringify(nextProps.MenuCategory.allTags.success))
+        // alert(JSON.stringify(nextProps.MenuCategory.allTags.data))
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('backHandler', this.handleDeviceBackButton)
+    }
+
     handleDeviceBackButton = () => {
         this.props.navigation.goBack();
         return true;
@@ -270,10 +284,6 @@ class CreateMenu extends Component {
             ],
             {cancelable: false}
         )
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener('backHandler', this.handleDeviceBackButton)
     }
 
     _showPicker = (key, val = false) => {

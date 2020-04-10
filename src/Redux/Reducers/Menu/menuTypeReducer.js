@@ -1,8 +1,9 @@
-import {MENU_TYPE_DATA, PROCESSING, STATUS, MENUS} from '../../Actions/types';
+import {MENU_TYPE_DATA, PROCESSING, STATUS, MENUS, ALL_TAGS_AND_SUBTAGS} from '../../Actions/types';
 
 const INITIAL_STATE = {
     menuTypeData: [],
     menus: [],
+    allTags: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +26,12 @@ export default (state = INITIAL_STATE, action) => {
         case MENU_TYPE_DATA: {
             return {
                 menuTypeData: payload
+            }
+        }
+
+        case ALL_TAGS_AND_SUBTAGS: {
+            return {
+                allTags: payload
             }
         }
 

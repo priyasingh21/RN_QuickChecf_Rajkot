@@ -12,10 +12,23 @@ import {
 
 import Common from './common';
 
-import {getAllCuisine} from './cuisineActions';
-import {getAllMenuTypes, getAllMenu} from './menuActions';
-import {getAllForYouTypes} from './forYouActions';
-import {setCummunicationPreferenceData} from './communicationPreferenceAction';
+import {
+    getAllCuisine
+} from './cuisineActions';
+
+import {
+    getAllMenuTypes,
+    getAllMenu,
+    getAllTagsWithSubTags
+} from './menuActions';
+
+import {
+    getAllForYouTypes
+} from './forYouActions';
+
+import {
+    setCummunicationPreferenceData
+} from './communicationPreferenceAction';
 
 export {
     signIn,
@@ -32,5 +45,6 @@ export {
     becomeAChef,
     getChef,
     getAllChefs,
-    updateProfile
+    updateProfile,
+    getAllTagsWithSubTags
 }

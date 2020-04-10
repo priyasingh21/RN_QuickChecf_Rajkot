@@ -14,11 +14,11 @@ const API_ENDPOINT = {
     BECOME_CHEF: 'becomeachef',
     CHEF: 'chef',
     UPDATE_PROFILE: 'update/profile',
+    TAG_TYPES: 'tag/types', // parent of /tags and no need for now
+    TAGS: 'tags',
 
     //pending
     TOGGLE_FOLLOW: 'toggle/follow',
-    TAG_TYPES: 'tag/types',
-    TAGS: 'tags',
 }
 
 export {
