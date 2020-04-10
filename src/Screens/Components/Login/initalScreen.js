@@ -58,16 +58,6 @@ class InitialScreen extends Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
-
-                    <View style={{
-                        height: wp(1),
-                        width: wp(35),
-                        backgroundColor: colors.WHITE,
-                        borderRadius: wp(5),
-                        position: 'absolute',
-                        bottom: hp(2),
-                        alignSelf: 'center'
-                    }} />
                 </ImageBackground>
             </View>
         )
