@@ -9,6 +9,7 @@ import {
     GET_ALL_COUNTRIES,
     BECOME_A_CHEF,
     GET_CHEF,
+    UPDATE_USER_PROFILE,
 } from '../../Actions/types';
 import { user } from '../initialState'
 import AsyncStorage from '@react-native-community/async-storage';
@@ -68,6 +69,13 @@ export default (state = INITIAL_STATE, action) => {
         }
 
         case LOGOUT_CHEF: {
+            return {
+                ...state,
+                user: payload
+            }
+        }
+
+        case UPDATE_USER_PROFILE: {
             return {
                 ...state,
                 user: payload

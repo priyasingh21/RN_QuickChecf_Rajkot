@@ -20,7 +20,15 @@ class AccountScreen extends Component {
         this.state = {
             user: props && props.User && props.User.user && props.User.user.data && props.User.user.data.length > 0 && props.User.user.data[0] || {},
             showBanner: false,
-            bannerMessage: ''
+            bannerMessage: '',
+            editUserData: {
+                name: '',
+                date_of_birth: '',
+                gender: '',
+                delivery_type: '',
+                lat: '',
+                long: '',
+            }
         }
         BackHandler.addEventListener('backHandler', this.handleDeviceBackButton)
     }
@@ -61,6 +69,24 @@ class AccountScreen extends Component {
     }
 
     handleEditProfile = () => {
+        const { handleLocalAction, localActions, navigation } = this.props;
+        const {editUserData} = this.state;
+        const {
+            name = 'Priya Singh',
+            date_of_birth = '08/08/1999',
+            gender = 2,
+            delivery_type = 'Deliver',
+            lat = 0,
+            long = 0,
+        } = editUserData;
+
+        this.setState({
+            showBanner: true,
+            bannerMessage: 'Thank you for updating Profile...!!!'
+        }, () => {
+            handleLocalAction({ type: localActions.EDIT_PROFILE, data: editUserData })
+        });
+        this.hideBanner();
 
     }
 

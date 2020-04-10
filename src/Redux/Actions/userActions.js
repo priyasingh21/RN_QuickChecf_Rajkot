@@ -8,7 +8,8 @@ import {
     GET_ALL_CHEF,
     GET_ALL_COUNTRIES,
     BECOME_A_CHEF,
-    GET_CHEF
+    GET_CHEF,
+    UPDATE_USER_PROFILE
 } from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants';
 import { processing } from './utility'
@@ -247,6 +248,41 @@ const becomeAChef = () => {
     }
 }
 
+const updateProfile = (data) => {
+    if(api_token){
+        const {name, date_of_birth, gender, delivery_type, lat, long} = data;
+        return (dispatch, getState) => {
+            processing(dispatch, true)
+            let paramURL = '?name=' + name + '&date_of_birth=' + date_of_birth + '&gender=' + gender + '&delivery_type=' + delivery_type + '&lat=' + lat + '&long='+ long;
+            return fetch(BASE_URL + API_ENDPOINT.BECOME_CHEF + paramURL, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
+                }
+            })
+                .then(response => response.json())
+                .then(res => {
+                    if (res) {
+                        processing(dispatch)
+                        dispatch({
+                            payload: res,
+                            type: UPDATE_USER_PROFILE
+                        });
+                    } else {
+                        processing(dispatch)
+                    }
+                })
+                .catch(err => {
+                    processing(dispatch)
+                    dispatch({
+                        payload: {},
+                        type: BECOME_A_CHEF
+                    });
+                });
+        };
+    }
+}
+
 const getCountryList = () => {
     return (dispatch, getState) => {
         processing(dispatch, true)
@@ -283,5 +319,6 @@ export {
     getAllChefs,
     getCountryList,
     becomeAChef,
-    getChef
+    getChef,
+    updateProfile
 }

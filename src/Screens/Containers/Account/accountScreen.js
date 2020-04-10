@@ -8,11 +8,16 @@ const handleLocalAction = (dispatch, action, navigation) => {
         case localActions.BECOME_A_CHEF:
             return dispatch(becomeAChef());
             break
+
+        case localActions.EDIT_PROFILE:
+            return dispatch(becomeAChef());
+            break
     }
 };
 
 export const localActions = {
-    BECOME_A_CHEF: 'BECOME_A_CHEF'
+    BECOME_A_CHEF: 'BECOME_A_CHEF',
+    EDIT_PROFILE: 'EDIT_PROFILE',
 };
 
 

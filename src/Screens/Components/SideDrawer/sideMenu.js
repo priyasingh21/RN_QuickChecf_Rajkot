@@ -188,14 +188,6 @@ class SideMenu extends Component {
                                             }}>
                                                 {`${country_code}${mobile}`}
                                                 </Text>
-
-                                                <Text style={{
-                                                fontSize: fontSizes.medium,
-                                                color: colors.APPGREEN,
-                                                fontWeight: 'bold'
-                                            }}>
-                                                {`Edit Profile`}
-                                                </Text>
                                 </View>
                             </View>
                             <Text style={{

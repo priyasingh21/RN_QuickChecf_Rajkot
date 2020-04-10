@@ -5,7 +5,9 @@ import {
     signUp,
     getCountryList,
     becomeAChef,
-    getChef
+    getChef,
+    getAllChefs,
+    updateProfile
 } from './userActions';
 
 import Common from './common';
@@ -28,5 +30,7 @@ export {
     setCummunicationPreferenceData,
     getAllMenu,
     becomeAChef,
-    getChef
+    getChef,
+    getAllChefs,
+    updateProfile
 }

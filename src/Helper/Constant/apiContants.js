@@ -12,10 +12,10 @@ const API_ENDPOINT = {
     COUNTRIES: 'countries',
     COMMUNICATION_PREFERENCE: 'communication/preference',
     BECOME_CHEF: 'becomeachef',
-
-    //pending
     CHEF: 'chef',
     UPDATE_PROFILE: 'update/profile',
+
+    //pending
     TOGGLE_FOLLOW: 'toggle/follow',
     TAG_TYPES: 'tag/types',
     TAGS: 'tags',
