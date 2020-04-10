@@ -1,4 +1,15 @@
-import { LOGIN_CHEF, LOGOUT_CHEF, SELECTED_LANGUAGE, SIGN_UP, PROCESSING, STATUS, GET_ALL_CHEF, GET_ALL_COUNTRIES } from '../../Actions/types';
+import {
+    LOGIN_CHEF,
+    LOGOUT_CHEF,
+    SELECTED_LANGUAGE,
+    SIGN_UP,
+    PROCESSING,
+    STATUS,
+    GET_ALL_CHEF,
+    GET_ALL_COUNTRIES,
+    BECOME_A_CHEF,
+    GET_CHEF,
+} from '../../Actions/types';
 import { user } from '../initialState'
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -28,10 +39,24 @@ export default (state = INITIAL_STATE, action) => {
             }
         }
 
+        case BECOME_A_CHEF: {
+            return {
+                ...state,
+                user: payload
+            }
+        }
+
         case GET_ALL_CHEF: {
             return {
                 ...state,
                 chefData: payload
+            }
+        }
+
+        case GET_CHEF: {
+            return {
+                ...state,
+                singleChef: payload
             }
         }
 

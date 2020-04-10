@@ -9,6 +9,7 @@ import { MobileVerificationScreen } from './Login/mobileVerificationScreen';
 import { SignInWithPhone } from './Login/signInWithPhone';
 import { Home } from './Dashboard/home';
 import { ChefScreen } from './Chefs/chefScreen';
+import { ChefDetail } from './Chefs/chefDetail';
 import { AccountScreen } from './Account/accountScreen';
 import { InboxScreen } from './Inbox/inboxScreen';
 import { DishScreen } from './Dishes/dishScreen';
@@ -56,5 +57,6 @@ export {
     OrderStatusMap,
     OrderList,
     OrderDetail,
-    Chat
+    Chat,
+    ChefDetail
 }

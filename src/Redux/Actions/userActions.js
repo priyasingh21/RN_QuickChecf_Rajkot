@@ -1,18 +1,26 @@
 import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { LOGIN_CHEF, LOGOUT_CHEF, SELECTED_LANGUAGE, SIGN_UP, GET_ALL_CHEF, GET_ALL_COUNTRIES } from './types';
+import {
+    LOGIN_CHEF,
+    LOGOUT_CHEF,
+    SELECTED_LANGUAGE,
+    SIGN_UP,
+    GET_ALL_CHEF,
+    GET_ALL_COUNTRIES,
+    BECOME_A_CHEF,
+    GET_CHEF
+} from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants';
 import { processing } from './utility'
 
 let api_token = '';
 let user_id = '';
+
 AsyncStorage.getItem('loginData').then(usr => {
     if(usr) {
         api_token = JSON.parse(usr).data[0].api_token;
         user_id = JSON.parse(usr).data[0].id;
     }
-}).catch(e => {
-
 })
 
 const signUp = (data = {}) => {
@@ -172,6 +180,73 @@ const getAllChefs = () => {
     }
 }
 
+const getChef = (data) => {
+    if(api_token){
+        let chefId = data.chef_id
+        return (dispatch, getState) => {
+            processing(dispatch, true)
+            return fetch(BASE_URL + API_ENDPOINT.CHEF + '?chef_id=' + chefId, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
+                }
+            })
+                .then(response => response.json())
+                .then(res => {
+                    if (res) {
+                        processing(dispatch)
+                        dispatch({
+                            payload: res,
+                            type: GET_CHEF
+                        });
+                    } else {
+                        processing(dispatch)
+                    }
+                })
+                .catch(err => {
+                    processing(dispatch)
+                    dispatch({
+                        payload: {},
+                        type: All_CHEFS
+                    });
+                });
+        };
+    }
+}
+
+const becomeAChef = () => {
+    if(api_token){
+        return (dispatch, getState) => {
+            processing(dispatch, true)
+            return fetch(BASE_URL + API_ENDPOINT.BECOME_CHEF, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
+                }
+            })
+                .then(response => response.json())
+                .then(res => {
+                    if (res) {
+                        processing(dispatch)
+                        dispatch({
+                            payload: res,
+                            type: BECOME_A_CHEF
+                        });
+                    } else {
+                        processing(dispatch)
+                    }
+                })
+                .catch(err => {
+                    processing(dispatch)
+                    dispatch({
+                        payload: {},
+                        type: BECOME_A_CHEF
+                    });
+                });
+        };
+    }
+}
+
 const getCountryList = () => {
     return (dispatch, getState) => {
         processing(dispatch, true)
@@ -206,5 +281,7 @@ export {
     selectLanguage,
     signUp,
     getAllChefs,
-    getCountryList
+    getCountryList,
+    becomeAChef,
+    getChef
 }

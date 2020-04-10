@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, BackHandler } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, BackHandler, TouchableOpacity } from 'react-native';
 import { boxShadow, colors, hp, wp, fontSizes } from '../../../Helper'
 import { CustomHeader, ProcessIndicator } from "../../Common";
 import Icon from 'react-native-vector-icons/AntDesign'
@@ -37,7 +37,7 @@ class ChefScreen extends Component {
         BackHandler.removeEventListener('backHandler', this.handleDeviceBackButton)
     }
 
-    renderChef = ({ item }) => {
+    renderChef = ({ item, index }) => {
         const { chefSearchContainer, imageView, rightImageView, starContainer, textStyle, tagContainer } = styles;
         let city = item.city || 'Mumbai';
         let distance = item.distance || '5';
@@ -48,7 +48,11 @@ class ChefScreen extends Component {
         let temp_image = item.temp_image || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS69rhd2wmjxNTRArQI9r_zVoj_avEoB4ZeNRjBWkwtIZHIgbZ9';
 
         return (
-            <View style={chefSearchContainer}>
+            <TouchableOpacity
+                onPress={() => {this.props.navigation.navigate('ChefDetail', {chefDetails: item})}}
+                style={chefSearchContainer}
+                key={index}
+            >
                 <View style={{ paddingHorizontal: wp(2), flexDirection: 'row' }}>
                     <View style={imageView}>
                         <Image
@@ -101,7 +105,7 @@ class ChefScreen extends Component {
                         color={colors.BLOODYRED}
                     />
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 

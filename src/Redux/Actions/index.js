@@ -3,7 +3,9 @@ import {
     logoutApp,
     selectLanguage,
     signUp,
-    getCountryList
+    getCountryList,
+    becomeAChef,
+    getChef
 } from './userActions';
 
 import Common from './common';
@@ -24,5 +26,7 @@ export {
     getCountryList,
     getAllForYouTypes,
     setCummunicationPreferenceData,
-    getAllMenu
+    getAllMenu,
+    becomeAChef,
+    getChef
 }

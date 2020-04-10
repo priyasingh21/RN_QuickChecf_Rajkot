@@ -50,9 +50,12 @@ class AccountScreen extends Component {
     }
 
     handleBecomeChef = () => {
+        const { handleLocalAction, localActions, navigation } = this.props;
         this.setState({
             showBanner: true,
             bannerMessage: 'Thank you for becoming a valuable chef...!!!'
+        }, () => {
+            handleLocalAction({ type: localActions.BECOME_A_CHEF })
         });
         this.hideBanner();
     }

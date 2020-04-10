@@ -9,9 +9,16 @@ const API_ENDPOINT = {
     REGISTER: 'register',
     LOGIN: 'login',
     All_CHEFS: 'chefs',
-    CHEF: 'chef',
     COUNTRIES: 'countries',
     COMMUNICATION_PREFERENCE: 'communication/preference',
+    BECOME_CHEF: 'becomeachef',
+
+    //pending
+    CHEF: 'chef',
+    UPDATE_PROFILE: 'update/profile',
+    TOGGLE_FOLLOW: 'toggle/follow',
+    TAG_TYPES: 'tag/types',
+    TAGS: 'tags',
 }
 
 export {

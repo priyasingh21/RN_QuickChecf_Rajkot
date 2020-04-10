@@ -41,7 +41,8 @@ class CustomHeader extends Component {
             isOrderList,
             drawerwithSearch,
             isOrderDetail,
-            isChat
+            isChat,
+            isChefDetail
         } = this.props;
 
         let menuTitle = (isAboutUs) && 'About Us'
@@ -61,6 +62,7 @@ class CustomHeader extends Component {
             || (isOrderList) && (titleText) ? titleText : ''
             ||(isOrderDetail) && (titleText) ? titleText : ''
             ||(isChat) && (titleText) ? titleText : ''
+            ||(isChefDetail) && (titleText) ? titleText : ''
             || '';
 
         return(

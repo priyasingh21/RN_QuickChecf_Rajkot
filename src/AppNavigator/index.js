@@ -14,7 +14,8 @@ import {
     OrderStatusMap,
     OrderList,
     OrderDetails,
-    Chat
+    Chat,
+    ChefDetail
 } from '../Screens/Containers';
 
 import { AppDrawer } from './drawerNavigation';
@@ -40,7 +41,8 @@ const stack = createStackNavigator({
     OrderStatusMap,
     OrderList,
     OrderDetails,
-    Chat
+    Chat,
+    ChefDetail
 }, {
     initialRouteName: initRoute,
     headerMode: 'none'

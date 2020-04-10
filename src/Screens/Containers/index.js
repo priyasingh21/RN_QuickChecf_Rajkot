@@ -31,6 +31,7 @@ import Home  from './Dashboard/home.js';
 
 //Chef
 import ChefScreen  from './Chefs/chefScreen';
+import ChefDetail  from './Chefs/chefDetail';
 
 //Chef
 import AccountScreen  from './Account/accountScreen';
@@ -71,5 +72,6 @@ export {
     OrderStatusMap,
     OrderList,
     OrderDetails,
-    Chat
+    Chat,
+    ChefDetail
 }

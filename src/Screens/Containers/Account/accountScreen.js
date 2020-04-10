@@ -1,9 +1,19 @@
 import {connect} from "react-redux";
 import {AccountScreen} from '../../Components/Account/accountScreen';
+import {becomeAChef} from '../../../Redux/Actions';
 
-const handleLocalAction = (dispatch, action, navigation) => {};
+const handleLocalAction = (dispatch, action, navigation) => {
+    const {type, data = {}} = action;
+    switch (type) {
+        case localActions.BECOME_A_CHEF:
+            return dispatch(becomeAChef());
+            break
+    }
+};
 
-export const localActions = {};
+export const localActions = {
+    BECOME_A_CHEF: 'BECOME_A_CHEF'
+};
 
 
 const mapStateToProps = (state) => {

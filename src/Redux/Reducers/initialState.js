@@ -8,6 +8,8 @@ const user = {
         isRTL : false,
         __jsogObjectId: "1"
     },
+    chefData: [],
+    singleChef: [],
 }
 
 const common = {
