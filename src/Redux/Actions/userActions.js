@@ -9,7 +9,7 @@ import {
     GET_ALL_COUNTRIES,
     BECOME_A_CHEF,
     GET_CHEF,
-    UPDATE_USER_PROFILE
+    UPDATE_USER_PROFILE, FOLLOW_UNFOLLOW_CHEF,
 } from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants';
 import { processing } from './utility'
@@ -215,6 +215,40 @@ const getChef = (data) => {
     }
 }
 
+const followUnfollowChef = (data) => {
+    if(api_token){
+        let chefId = data.chef_id
+        return (dispatch, getState) => {
+            processing(dispatch, true)
+            return fetch(BASE_URL + API_ENDPOINT.TOGGLE_FOLLOW + '?chef_id=' + chefId, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
+                }
+            })
+                .then(response => response.json())
+                .then(res => {
+                    if (res) {
+                        processing(dispatch)
+                        dispatch({
+                            payload: res,
+                            type: FOLLOW_UNFOLLOW_CHEF
+                        });
+                    } else {
+                        processing(dispatch)
+                    }
+                })
+                .catch(err => {
+                    processing(dispatch)
+                    dispatch({
+                        payload: {},
+                        type: All_CHEFS
+                    });
+                });
+        };
+    }
+}
+
 const becomeAChef = () => {
     if(api_token){
         return (dispatch, getState) => {
@@ -320,5 +354,6 @@ export {
     getCountryList,
     becomeAChef,
     getChef,
-    updateProfile
+    updateProfile,
+    followUnfollowChef
 }

@@ -7,7 +7,8 @@ import {
     becomeAChef,
     getChef,
     getAllChefs,
-    updateProfile
+    updateProfile,
+    followUnfollowChef
 } from './userActions';
 
 import Common from './common';
@@ -46,5 +47,6 @@ export {
     getChef,
     getAllChefs,
     updateProfile,
-    getAllTagsWithSubTags
+    getAllTagsWithSubTags,
+    followUnfollowChef
 }

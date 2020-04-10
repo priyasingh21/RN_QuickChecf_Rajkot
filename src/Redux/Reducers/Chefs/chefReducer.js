@@ -10,6 +10,7 @@ import {
     BECOME_A_CHEF,
     GET_CHEF,
     UPDATE_USER_PROFILE,
+    FOLLOW_UNFOLLOW_CHEF
 } from '../../Actions/types';
 import { user } from '../initialState'
 import AsyncStorage from '@react-native-community/async-storage';
@@ -34,6 +35,13 @@ export default (state = INITIAL_STATE, action) => {
             }
 
         case LOGIN_CHEF: {
+            return {
+                ...state,
+                user: payload
+            }
+        }
+
+        case FOLLOW_UNFOLLOW_CHEF: {
             return {
                 ...state,
                 user: payload

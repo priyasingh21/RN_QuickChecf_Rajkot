@@ -16,9 +16,9 @@ const API_ENDPOINT = {
     UPDATE_PROFILE: 'update/profile',
     TAG_TYPES: 'tag/types', // parent of /tags and no need for now
     TAGS: 'tags',
+    TOGGLE_FOLLOW: 'toggle/follow',
 
     //pending
-    TOGGLE_FOLLOW: 'toggle/follow',
 }
 
 export {

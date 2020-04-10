@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text, FlatList, Image, StyleSheet, BackHandler, TouchableOpacity} from 'react-native';
 import { boxShadow, colors, hp, wp, fontSizes } from '../../../Helper'
-import { CustomHeader, ProcessIndicator } from "../../Common";
+import {Banner, CustomHeader, ProcessIndicator} from '../../Common';
 import Icon from 'react-native-vector-icons/AntDesign'
 
 class ChefDetail extends Component {
@@ -11,6 +11,8 @@ class ChefDetail extends Component {
         this.state = {
             isLoading: true,
             chef: [],
+            showBanner: false,
+            bannerMessage: '',
         }
         BackHandler.addEventListener('backHandler', this.handleDeviceBackButton)
     }
@@ -46,10 +48,34 @@ class ChefDetail extends Component {
         }, 3000)
     }
 
+    toggleChefFollow = () => {
+        const { handleLocalAction, localActions, navigation } = this.props;
+        let chefParamDetail = navigation.state && navigation.state.params && navigation.state.params && navigation.state.params.chefDetails;
+        this.setState({
+            showBanner: true,
+            bannerMessage: 'Follow actions changed..!!'
+        }, () => {
+            (chefParamDetail && chefParamDetail.id) && handleLocalAction({ type: localActions.TOGGLE_FOLLOW_CHEF, data: {chef_id: chefParamDetail.id} })
+            this.hideBanner();
+        });
+    }
+
+    hideBanner = () => {
+        setTimeout(() => {
+            this.setState({
+                showBanner: false,
+                bannerMessage: ''
+            })
+        }, 3000)
+    }
+
     render() {
         const { navigation, User } = this.props;
-        const { chef, isLoading } = this.state;
+        const { chef, isLoading, showBanner, bannerMessage } = this.state;
         const { container, detailContainer } = styles;
+        let safeArea = {
+            top: 20
+        }
         let chefParamDetail = navigation.state && navigation.state.params && navigation.state.params && navigation.state.params.chefDetails;
         const {id, name, country_code, mobile, location, area, status, role, email, followings_count, followers_count, temp_image, profile_image, is_customer, is_chef, has_address, address} = chefParamDetail;
         return (
@@ -62,6 +88,17 @@ class ChefDetail extends Component {
                         titleText={'Chef Details'}
                         isBack={true}
                     />
+
+                    {
+                        (showBanner && bannerMessage !== '') && <Banner
+                            title={''}
+                            showBanner={showBanner}
+                            message={bannerMessage}
+                            safeArea={safeArea}
+                            bannerColor={colors.SOILTEXTCOLOR}
+                        />
+                    }
+
                 </View>
 
                 <View style={detailContainer} >
@@ -71,6 +108,16 @@ class ChefDetail extends Component {
                                 fontSize: fontSizes.largel
                             }}>{'Loading Chef Details...'}</Text>
                         </View>
+
+                    <TouchableOpacity
+                        onPress={this.toggleChefFollow}
+                        style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: colors.SKYBLUE, marginVertical: wp(10), marginHorizontal: wp(10) }}
+                    >
+                        <Text style={{
+                            color: colors.SILVER,
+                            fontSize: fontSizes.largel
+                        }}>{'Toggle Follow'}</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
