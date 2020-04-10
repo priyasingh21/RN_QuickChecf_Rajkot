@@ -25,10 +25,24 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        this.loadForYouData();
+        this.loadMenuData();
+        this.loadCuisineData();
+    }
+
+    loadMenuData = async () => {
+        const { handleLocalAction, localActions, navigation } = this.props;
+        handleLocalAction({ type: localActions.MENU_TYPE_DATA })
+    }
+
+    loadForYouData = async () => {
+        const { handleLocalAction, localActions, navigation } = this.props;
+        handleLocalAction({ type: localActions.FOR_YOU_DATA })
+    }
+
+    loadCuisineData = async () => {
         const { handleLocalAction, localActions, navigation } = this.props;
         handleLocalAction({ type: localActions.CUISINE_DATA })
-        handleLocalAction({ type: localActions.MENU_TYPE_DATA })
-        handleLocalAction({ type: localActions.FOR_YOU_DATA })
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
