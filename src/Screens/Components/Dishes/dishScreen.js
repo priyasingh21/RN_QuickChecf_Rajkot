@@ -25,7 +25,12 @@ class DishScreen extends Component{
 
     componentDidMount() {
         const { handleLocalAction, localActions, navigation } = this.props;
-        handleLocalAction({ type: localActions.LOAD_DISHES_DATA })
+        this.setState({
+            isLoading: true
+        }, () => {
+            handleLocalAction({ type: localActions.LOAD_DISHES_DATA })
+            this.handleLoader();
+        })
     }
 
     UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
@@ -749,7 +754,7 @@ class DishScreen extends Component{
             this.setState({
                 isLoading: false
             })
-        }, 2000)
+        }, 1500)
     }
 
     render() {
