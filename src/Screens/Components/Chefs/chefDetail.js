@@ -87,7 +87,6 @@ class ChefDetail extends Component {
         const {id, name, country_code, mobile, location, area, status, role, email, followings_count, followers_count, temp_image, profile_image, is_customer, is_chef, has_address, address} = chefParamDetail;
         return (
             <View style={container}>
-                {/*<ProcessIndicator color={colors.WHITE} isProcessing={chef.length <= 0} />*/}
                 <View style={{ height: hp(12) }}>
                     <CustomHeader
                         navigation={this.props.navigation}

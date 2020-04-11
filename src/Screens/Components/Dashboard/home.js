@@ -28,19 +28,17 @@ class Home extends Component {
         return true;
     }
 
-    componentDidMount = () => {
-        token.then(res => {
-            this.isRefreshing = true;
-            this.loadData(JSON.parse(res).data[0].api_token);
-            this.isRefreshing = false;
-        })
+    componentDidMount() {
+        token.then(res => this.loadData(JSON.parse(res).data[0].api_token))
     }
 
     loadData = (api_token = '') => {
         const { handleLocalAction, localActions, navigation } = this.props;
+        this.isRefreshing = true
         handleLocalAction({ type: localActions.MENU_TYPE_DATA, data: {api_token: api_token} })
         handleLocalAction({ type: localActions.FOR_YOU_DATA, data: {api_token: api_token} })
         handleLocalAction({ type: localActions.CUISINE_DATA, data: {api_token: api_token} })
+        this.isRefreshing = false
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -142,11 +140,7 @@ class Home extends Component {
     }
 
     onRefresh = () => {
-        token.then(res => {
-            this.isRefreshing = true;
-            this.loadData(JSON.parse(res).data[0].api_token);
-            this.isRefreshing = false;
-        })
+        token.then(res => this.loadData(JSON.parse(res).data[0].api_token))
     }
 
     render() {

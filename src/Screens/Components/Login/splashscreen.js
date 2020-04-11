@@ -39,7 +39,9 @@ class Splashscreen extends Component {
                 let data = JSON.parse(res).data;
                 if(data && data.length > 0 && data[0].id) {
                     AsyncStorage.getItem('setVerificationCode').then(response => {
-                        if(response && JSON.parse(response) && JSON.parse(response).type === ('phone' || 'email') && JSON.parse(response).entered) {
+                        if(response && JSON.parse(response) && JSON.parse(response).type === 'phone' && JSON.parse(response).entered) {
+                            this.props.navigation.navigate('AppDrawer');
+                        } else if(response && JSON.parse(response) && JSON.parse(response).type === 'email' && JSON.parse(response).entered) {
                             this.props.navigation.navigate('AppDrawer');
                         } else if(response && JSON.parse(response) && JSON.parse(response).type === 'phone' && !JSON.parse(response).entered) {
                             this.props.navigation.navigate('Login');

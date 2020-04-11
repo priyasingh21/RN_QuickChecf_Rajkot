@@ -117,7 +117,8 @@ class MobileVerificationScreen extends Component {
                     }
                 }).catch(e => {
 
-                })})
+                })
+            })
         } else {
             this.updateText('Whooops,\nEntered code is wrong, Please try again...', 'error')
             this.setState({ isShowError: true })

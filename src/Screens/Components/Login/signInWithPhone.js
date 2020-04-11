@@ -61,7 +61,13 @@ class SignInWithPhone extends Component {
                     if(newType === 'phone') {
                         this.props.navigation.navigate('MobileVerificationScreen')
                     } else {
-                        this.props.navigation.navigate('AppDrawer')
+                        AsyncStorage.getItem('loginData').then(res => {
+                            if(res && JSON.parse(res).data[0]) {
+                                this.props.navigation.navigate('AppDrawer');
+                            }
+                        }).catch(e => {
+
+                        })
                     }
                 }
             }
