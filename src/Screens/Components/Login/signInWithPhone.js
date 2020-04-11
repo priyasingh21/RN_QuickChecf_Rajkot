@@ -16,7 +16,7 @@ class SignInWithPhone extends Component {
             password: '',
             error: '',
             selectedCountry: '',
-            country_code_Arr: [],
+            country_code_Arr: props && props.User && props.User.countries || [],
             type: props.navigation && props.navigation.state && props.navigation.state.params && props.navigation.state.params.type && props.navigation.state.params.type || 'phone',
             isCustomAlertShow: false,
             isFirstTime: true
@@ -211,7 +211,7 @@ class SignInWithPhone extends Component {
                                     bgColor={colors.WHITE}
                                     tintColor={'#666666'}
                                     activityTintColor={'green'}
-                                    handler={(selection, row) => this.setState({ selectedCountry: [country_list][selection][row] })}
+                                    handler={(selection, row) => country_list && country_list.length > 0 && this.setState({ selectedCountry: [country_list][selection][row] })}
                                     data={[country_list]}
                                 />
                             </View>
@@ -233,7 +233,6 @@ class SignInWithPhone extends Component {
                                     style={{ borderBottomWidth: 1, borderBottomColor: colors.BLACK, }}
                                     keyboardType={'numeric'}
                                     maxLength={10}
-                                    keyboardType={'numeric'}
                                 />
                             </View>
                         </View>

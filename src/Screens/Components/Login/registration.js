@@ -19,7 +19,7 @@ class Registration extends Component {
             email: '',
             role: '',
             error: '',
-            country_code_Arr: [],
+            country_code_Arr: props && props.User && props.User.countries || [],
             isRegisterSuccess: false,
         }
     }
