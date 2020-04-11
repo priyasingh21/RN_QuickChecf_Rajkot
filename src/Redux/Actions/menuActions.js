@@ -17,7 +17,7 @@ AsyncStorage.getItem('loginData').then(usr => {
 
 const getAllMenuTypes = () => {
     if (api_token) {
-        return async (dispatch) => {
+        return (dispatch) => {
             processing(dispatch, true)
 
             fetch(BASE_URL + API_ENDPOINT.MENU_TYPES, {
@@ -44,7 +44,7 @@ const getAllMenu = (data = {}) => {
     if (api_token) {
         let formData = new FormData();
         formData.append('data', data);
-        return async (dispatch) => {
+        return (dispatch) => {
             processing(dispatch, true)
             fetch(BASE_URL + API_ENDPOINT.MENU, {
                 method: 'POST',
@@ -70,7 +70,7 @@ const getAllMenu = (data = {}) => {
 
 const getAllTagsWithSubTags = () => {
     if (api_token) {
-        return async (dispatch) => {
+        return (dispatch) => {
             processing(dispatch, true)
             fetch(BASE_URL + API_ENDPOINT.TAGS, {
                 method: 'POST',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, Image, ScrollView, TouchableOpacity, StyleSheet, BackHandler } from 'react-native';
+import { View, Text, FlatList, Image, ScrollView, TouchableOpacity, StyleSheet, BackHandler, RefreshControl } from 'react-native';
 import { colors, fontSizes, hp, wp } from '../../../Helper';
 import { CustomHeader, ProcessIndicator, CustomAlert2 } from '../../Common';
 
@@ -16,7 +16,8 @@ class Home extends Component {
             menuCategoryData: props && props.MenuCategory && props.MenuCategory.menuTypeData && props.MenuCategory.menuTypeData.data || [],
             forYouCategory: props && props.ForYouCategory && props.ForYouCategory.forYouTypeData && props.ForYouCategory.forYouTypeData.data || []
         }
-        BackHandler.addEventListener('backHandler', this.handleDeviceBackButton)
+        BackHandler.addEventListener('backHandler', this.handleDeviceBackButton);
+        this.isRefreshing = false
     }
 
     handleDeviceBackButton = () => {
@@ -24,24 +25,16 @@ class Home extends Component {
         return true;
     }
 
-    componentDidMount() {
-        this.loadForYouData();
-        this.loadMenuData();
-        this.loadCuisineData();
+    componentDidMount = () => {
+        this.isRefreshing = true;
+        this.loadData();
+        this.isRefreshing = false;
     }
 
-    loadMenuData = async () => {
+    loadData = () => {
         const { handleLocalAction, localActions, navigation } = this.props;
         handleLocalAction({ type: localActions.MENU_TYPE_DATA })
-    }
-
-    loadForYouData = async () => {
-        const { handleLocalAction, localActions, navigation } = this.props;
         handleLocalAction({ type: localActions.FOR_YOU_DATA })
-    }
-
-    loadCuisineData = async () => {
-        const { handleLocalAction, localActions, navigation } = this.props;
         handleLocalAction({ type: localActions.CUISINE_DATA })
     }
 
@@ -143,6 +136,12 @@ class Home extends Component {
         )
     }
 
+    onRefresh = () => {
+        this.isRefreshing = true;
+        this.loadData();
+        this.isRefreshing = false;
+    }
+
     render() {
         const { container, detailContainer, headerTextView, headerTextStyle, flatlistContainer } = styles;
         const { cuisineData, menuCategoryData, forYouCategory } = this.state;
@@ -163,7 +162,12 @@ class Home extends Component {
 
                     <View style={detailContainer} >
                         <View style={{ flex: 1, paddingHorizontal: hp(1) }}>
-                            <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+                            <ScrollView
+                                autoscrollToTopThreshold={0.6}
+                                showsVerticalScrollIndicator={false}
+                                style={{ flex: 1 }}
+                                refreshControl={<RefreshControl refreshing={this.isRefreshing} onRefresh={this.onRefresh} />}
+                            >
                                 <View style={headerTextView}>
                                     <Text style={headerTextStyle}>{'For you'}</Text>
                                 </View>

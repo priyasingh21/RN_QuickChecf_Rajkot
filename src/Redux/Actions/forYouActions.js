@@ -17,7 +17,7 @@ AsyncStorage.getItem('loginData').then(usr => {
 
 const getAllForYouTypes = () => {
     if(api_token) {
-        return async (dispatch, getState) => {
+        return (dispatch, getState) => {
             processing(dispatch, true)
             fetch(BASE_URL + API_ENDPOINT.FOR_YOU, {
                 method: 'GET',
@@ -34,8 +34,7 @@ const getAllForYouTypes = () => {
                             type: FOR_YOU_DATA
                         });
                     }
-                }).catch(e => {
-            })
+                }).catch(e => {})
         };
     }
 };

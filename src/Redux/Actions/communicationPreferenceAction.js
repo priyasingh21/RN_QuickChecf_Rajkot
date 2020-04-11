@@ -1,4 +1,4 @@
-import { SET_COMMUNICATION_PREFERENCE } from './types';
+import {MENU_TYPE_DATA, SET_COMMUNICATION_PREFERENCE} from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants'
 import { processing } from './utility';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -25,29 +25,25 @@ const setCummunicationPreferenceData = (data) => {
         formData.append('allow_phone', allow_phone);
         formData.append('allow_sms', allow_sms);
 
-        return async (dispatch) => {
+        return (dispatch) => {
             processing(dispatch, true)
-            try {
-                const response = await fetch(BASE_URL + API_ENDPOINT.COMMUNICATION_PREFERENCE, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Authorization': 'Bearer ' + api_token
-                    }
-                });
-                const res = await response.json();
-                if (res) {
-                    processing(dispatch);
-                    dispatch({
-                        payload: res,
-                        type: SET_COMMUNICATION_PREFERENCE
-                    });
+            fetch(BASE_URL + API_ENDPOINT.COMMUNICATION_PREFERENCE, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Authorization': 'Bearer ' + api_token
                 }
-            }
-            catch (err) {
-                processing(dispatch);
-                return err;
-            }
+            }).then(response => response.json())
+                .then(res => {
+                    if (res) {
+                        processing(dispatch);
+                        dispatch({
+                            payload: res,
+                            type: SET_COMMUNICATION_PREFERENCE
+                        });
+                    }
+                }).catch(e => {
+            });
         };
     }
 };
