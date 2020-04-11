@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { ChefDetail } from '../../Components/Chefs/chefDetail';
-import { getChef } from "../../../Redux/Actions/userActions";
+import {followUnfollowChef, getChef} from '../../../Redux/Actions/userActions';
 
 export const localActions = {
     GET_CHEF: 'GET_CHEF',
@@ -16,7 +16,7 @@ const handleLocalAction = (dispatch, action, navigation) => {
             break
 
         case localActions.TOGGLE_FOLLOW_CHEF:
-            return dispatch(getChef(data));
+            return dispatch(followUnfollowChef(data));
             break
     }
 };

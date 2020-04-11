@@ -33,7 +33,6 @@ class Home extends Component {
             this.isRefreshing = true;
             this.loadData(JSON.parse(res).data[0].api_token);
             this.isRefreshing = false;
-
         })
     }
 

@@ -3,6 +3,9 @@ import {View, Text, FlatList, Image, StyleSheet, BackHandler, TouchableOpacity} 
 import { boxShadow, colors, hp, wp, fontSizes } from '../../../Helper'
 import {Banner, CustomHeader, ProcessIndicator} from '../../Common';
 import Icon from 'react-native-vector-icons/AntDesign'
+import AsyncStorage from '@react-native-community/async-storage';
+
+let token = AsyncStorage.getItem('loginData')
 
 class ChefDetail extends Component {
 
@@ -20,7 +23,9 @@ class ChefDetail extends Component {
     UNSAFE_componentWillMount() {
         const { handleLocalAction, localActions, navigation } = this.props;
         let chefParamDetail = navigation.state && navigation.state.params && navigation.state.params && navigation.state.params.chefDetails;
-        (chefParamDetail && chefParamDetail.id) && handleLocalAction({ type: localActions.GET_CHEF, data: {chef_id: chefParamDetail.id} })
+        token.then(res => {
+            (chefParamDetail && chefParamDetail.id) && handleLocalAction({ type: localActions.GET_CHEF, data: {chef_id: chefParamDetail.id, api_token: JSON.parse(res).data[0].api_token} })
+        })
     }
 
     UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
@@ -55,8 +60,10 @@ class ChefDetail extends Component {
             showBanner: true,
             bannerMessage: 'Follow actions changed..!!'
         }, () => {
-            (chefParamDetail && chefParamDetail.id) && handleLocalAction({ type: localActions.TOGGLE_FOLLOW_CHEF, data: {chef_id: chefParamDetail.id} })
-            this.hideBanner();
+            token.then(res => {
+                (chefParamDetail && chefParamDetail.id) && handleLocalAction({ type: localActions.TOGGLE_FOLLOW_CHEF, data: {chef_id: chefParamDetail.id, api_token: JSON.parse(res).data[0].api_token} })
+                this.hideBanner();
+            })
         });
     }
 

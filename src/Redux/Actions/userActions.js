@@ -14,16 +14,6 @@ import {
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants';
 import { processing } from './utility'
 
-let api_token = '';
-let user_id = '';
-
-AsyncStorage.getItem('loginData').then(usr => {
-    if(usr) {
-        api_token = JSON.parse(usr).data[0].api_token;
-        user_id = JSON.parse(usr).data[0].id;
-    }
-})
-
 const signUp = (data = {}) => {
     const { name, email, password, confirmPassword, mobile, country_code, country_id } = data;
 
@@ -147,7 +137,8 @@ const selectLanguage = languageData => {
     };
 };
 
-const getAllChefs = () => {
+const getAllChefs = (data) => {
+    let api_token = data.api_token
     if(api_token){
         return (dispatch, getState) => {
             processing(dispatch, true)
@@ -182,6 +173,7 @@ const getAllChefs = () => {
 }
 
 const getChef = (data) => {
+    let api_token = data.api_token
     if(api_token){
         let chefId = data.chef_id
         return (dispatch, getState) => {
@@ -216,6 +208,8 @@ const getChef = (data) => {
 }
 
 const followUnfollowChef = (data) => {
+    let api_token = data.api_token
+
     if(api_token){
         let chefId = data.chef_id
         return (dispatch, getState) => {
@@ -249,7 +243,9 @@ const followUnfollowChef = (data) => {
     }
 }
 
-const becomeAChef = () => {
+const becomeAChef = (data) => {
+    let api_token = data.api_token
+
     if(api_token){
         return (dispatch, getState) => {
             processing(dispatch, true)
@@ -283,6 +279,8 @@ const becomeAChef = () => {
 }
 
 const updateProfile = (data) => {
+    let api_token = data.api_token
+
     if(api_token){
         const {name, date_of_birth, gender, delivery_type, lat, long} = data;
         return (dispatch, getState) => {

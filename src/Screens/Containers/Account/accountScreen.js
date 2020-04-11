@@ -1,16 +1,16 @@
 import {connect} from "react-redux";
 import {AccountScreen} from '../../Components/Account/accountScreen';
-import {becomeAChef} from '../../../Redux/Actions';
+import {becomeAChef, updateProfile} from '../../../Redux/Actions';
 
 const handleLocalAction = (dispatch, action, navigation) => {
     const {type, data = {}} = action;
     switch (type) {
         case localActions.BECOME_A_CHEF:
-            return dispatch(becomeAChef());
+            return dispatch(becomeAChef(data));
             break
 
         case localActions.EDIT_PROFILE:
-            return dispatch(becomeAChef());
+            return dispatch(updateProfile(data));
             break
     }
 };

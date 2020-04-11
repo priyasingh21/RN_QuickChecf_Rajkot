@@ -3,6 +3,9 @@ import { View, Text, FlatList, Image, StyleSheet, BackHandler, TouchableOpacity 
 import { boxShadow, colors, hp, wp, fontSizes } from '../../../Helper'
 import { CustomHeader, ProcessIndicator } from "../../Common";
 import Icon from 'react-native-vector-icons/AntDesign'
+import AsyncStorage from '@react-native-community/async-storage';
+
+let token = AsyncStorage.getItem('loginData')
 
 class ChefScreen extends Component {
 
@@ -17,7 +20,9 @@ class ChefScreen extends Component {
 
     UNSAFE_componentWillMount() {
         const { handleLocalAction, localActions, navigation } = this.props;
-        handleLocalAction({ type: localActions.GET_ALL_CHEF })
+        token.then(res => {
+            handleLocalAction({ type: localActions.GET_ALL_CHEF, data: {api_token: JSON.parse(res).data[0].api_token} })
+        })
     }
 
     UNSAFE_componentWillReceiveProps(nextProps, nextContext) {

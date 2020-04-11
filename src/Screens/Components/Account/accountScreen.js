@@ -13,6 +13,8 @@ import { colors, fontSizes, hp, wp, boxShadow } from '../../../Helper'
 import { AppButton, CustomHeader, Banner } from "../../Common";
 import Icon from 'react-native-vector-icons/AntDesign';
 
+let token = AsyncStorage.getItem('loginData')
+
 class AccountScreen extends Component {
 
     constructor(props) {
@@ -63,7 +65,9 @@ class AccountScreen extends Component {
             showBanner: true,
             bannerMessage: 'Thank you for becoming a valuable chef...!!!'
         }, () => {
-            handleLocalAction({ type: localActions.BECOME_A_CHEF })
+            token.then(res => {
+                handleLocalAction({ type: localActions.BECOME_A_CHEF, data: {api_token: JSON.parse(res).data[0].api_token} })
+            })
         });
         this.hideBanner();
     }
@@ -71,6 +75,11 @@ class AccountScreen extends Component {
     handleEditProfile = () => {
         const { handleLocalAction, localActions, navigation } = this.props;
         const {editUserData} = this.state;
+        let apiT;
+        token.then(res => {
+            apiT = JSON.parse(res).data[0].api_token;
+        })
+
         const {
             name = 'Priya Singh',
             date_of_birth = '08/08/1999',
@@ -78,6 +87,7 @@ class AccountScreen extends Component {
             delivery_type = 'Deliver',
             lat = 0,
             long = 0,
+            api_token = apiT
         } = editUserData;
 
         this.setState({

@@ -7,11 +7,11 @@ export const localActions = {
 };
 
 const handleLocalAction = (dispatch, action, navigation) => {
-    const { type } = action;
+    const { type, data } = action;
     switch (type) {
 
         case localActions.GET_ALL_CHEF:
-            return dispatch(getAllChefs());
+            return dispatch(getAllChefs(data));
             break
     }
 };
