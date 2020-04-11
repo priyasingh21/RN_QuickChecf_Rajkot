@@ -13,14 +13,12 @@ export default (state = INITIAL_STATE, action) => {
 
         case PROCESSING:
             return {
-              ...state,
-              processing: action.payload
+              processing: payload
             }
 
           case STATUS:
             return {
-              ...state,
-              status: action.payload
+              status: payload
             }
 
         case MENU_TYPE_DATA: {

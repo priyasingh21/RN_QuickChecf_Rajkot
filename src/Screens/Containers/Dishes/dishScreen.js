@@ -18,7 +18,7 @@ const handleLocalAction = (dispatch, action, navigation) => {
 };
 
 const mapStateToProps = (state) => {
-    const { User, Cuisine, MenuCategory, ForYouCategory } = state;
+    const { User, MenuCategory } = state;
     const { processing, status: userStatus } = User;
     const { processing: menuProcessing, status: menuStatus } = MenuCategory;
     return {

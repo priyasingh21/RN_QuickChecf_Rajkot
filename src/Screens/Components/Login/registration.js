@@ -230,117 +230,120 @@ class Registration extends Component {
                             {"Hello, Let's Join!"}
                         </Text>
 
-                        <KeyboardAwareScrollView
-                            enableOnAndroid={true}
-                            scrollForExtraHeightOnAndroid={'100%'}
-                            keyboardShouldPersistTaps='handled'
-                            extraScrollHeight={hp(2)}
-                            style={{ marginBottom: hp(0) }}
-                            contentContainerStyle={{ paddingBottom: hp(0) }}
-                            showsVerticalScrollIndicator={false}
-                        >
-                            <CustomTextInput
-                                textInputOuterViewStyle={{ height: hp(5) }}
-                                iconFileName={'FontAwesomeIcon'}
-                                iconName={'user-circle'}
-                                placeHolderText={'Full Name'}
-                                onChangeText={(value) => this.updateValue(value, 'name')}
-                            />
-
-                            <CustomTextInput
-                                textInputOuterViewStyle={{ height: hp(5) }}
-                                iconFileName={'MaterialCommunityIconsIcon'}
-                                iconName={'email'}
-                                placeHolderText={'Email'}
-                                onChangeText={(value) => this.updateValue(value, 'email')}
-                                keyboardType={'email-address'}
-                            />
-                            <View style={{
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}>
-                                <DropDownMenu
-                                    style={{
-                                        borderRadius: wp(3),
-                                        height: hp(5),
-                                        marginRight: wp(1),
-                                        alignItems: 'center'
-                                    }}
-                                    bgColor={colors.WHITE}
-                                    tintColor={'#666666'}
-                                    activityTintColor={'green'}
-                                    handler={(selection, row) => this.setState({ selectedCountry: [country_list][selection][row] })}
-                                    data={[country_list]}
+                        {
+                            (country_list && country_list.length > 0) &&
+                            <KeyboardAwareScrollView
+                                enableOnAndroid={true}
+                                scrollForExtraHeightOnAndroid={'100%'}
+                                keyboardShouldPersistTaps='handled'
+                                extraScrollHeight={hp(2)}
+                                style={{ marginBottom: hp(0) }}
+                                contentContainerStyle={{ paddingBottom: hp(0) }}
+                                showsVerticalScrollIndicator={false}
+                            >
+                                <CustomTextInput
+                                    textInputOuterViewStyle={{ height: hp(5) }}
+                                    iconFileName={'FontAwesomeIcon'}
+                                    iconName={'user-circle'}
+                                    placeHolderText={'Full Name'}
+                                    onChangeText={(value) => this.updateValue(value, 'name')}
                                 />
 
                                 <CustomTextInput
-                                    textInputOuterViewStyle={{ height: hp(5), width: wp(65) }}
+                                    textInputOuterViewStyle={{ height: hp(5) }}
                                     iconFileName={'MaterialCommunityIconsIcon'}
-                                    iconName={'phone'}
-                                    placeHolderText={'Mobile Number'}
-                                    onChangeText={(value) => this.updateValue(value, 'mobile')}
-                                    keyboardType={'number-pad'}
-                                    maxLength={10}
+                                    iconName={'email'}
+                                    placeHolderText={'Email'}
+                                    onChangeText={(value) => this.updateValue(value, 'email')}
+                                    keyboardType={'email-address'}
+                                />
+                                <View style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}>
+                                    <DropDownMenu
+                                        style={{
+                                            borderRadius: wp(3),
+                                            height: hp(5),
+                                            marginRight: wp(1),
+                                            alignItems: 'center'
+                                        }}
+                                        bgColor={colors.WHITE}
+                                        tintColor={'#666666'}
+                                        activityTintColor={'green'}
+                                        handler={(selection, row) => this.setState({ selectedCountry: [country_list][selection][row] })}
+                                        data={[country_list]}
+                                    />
+
+                                    <CustomTextInput
+                                        textInputOuterViewStyle={{ height: hp(5), width: wp(65) }}
+                                        iconFileName={'MaterialCommunityIconsIcon'}
+                                        iconName={'phone'}
+                                        placeHolderText={'Mobile Number'}
+                                        onChangeText={(value) => this.updateValue(value, 'mobile')}
+                                        keyboardType={'number-pad'}
+                                        maxLength={10}
+                                    />
+
+                                </View>
+
+                                <CustomTextInput
+                                    textInputOuterViewStyle={{ height: hp(5) }}
+                                    iconFileName={'MaterialCommunityIconsIcon'}
+                                    iconName={'lock-outline'}
+                                    placeHolderText={'Password'}
+                                    onChangeText={(value) => this.updateValue(value, 'password')}
+                                    secureText={true}
                                 />
 
-                            </View>
+                                <CustomTextInput
+                                    textInputOuterViewStyle={{ height: hp(5) }}
+                                    iconFileName={'MaterialCommunityIconsIcon'}
+                                    iconName={'lock-outline'}
+                                    placeHolderText={'Confirm Password'}
+                                    onChangeText={(value) => this.updateValue(value, 'confirmPassword')}
+                                    secureText={true}
+                                />
 
-                            <CustomTextInput
-                                textInputOuterViewStyle={{ height: hp(5) }}
-                                iconFileName={'MaterialCommunityIconsIcon'}
-                                iconName={'lock-outline'}
-                                placeHolderText={'Password'}
-                                onChangeText={(value) => this.updateValue(value, 'password')}
-                                secureText={true}
-                            />
+                                <SmallAppButton
+                                    btnStyle={{ width: wp(65), marginTop: wp(5) }}
+                                    onPress={() => this.onSignUpClick()}
+                                    btnTitle={'Register'} />
 
-                            <CustomTextInput
-                                textInputOuterViewStyle={{ height: hp(5) }}
-                                iconFileName={'MaterialCommunityIconsIcon'}
-                                iconName={'lock-outline'}
-                                placeHolderText={'Confirm Password'}
-                                onChangeText={(value) => this.updateValue(value, 'confirmPassword')}
-                                secureText={true}
-                            />
-
-                            <SmallAppButton
-                                btnStyle={{ width: wp(65), marginTop: wp(5) }}
-                                onPress={() => this.onSignUpClick()}
-                                btnTitle={'Register'} />
-
-                            <Text
-                                onPress={() => {
-                                    this.setState({
-                                        name: '',
-                                        mobile: '',
-                                        password: '',
-                                        selectedCountry: '',
-                                        confirmPassword: '',
-                                        email: '',
-                                        role: '',
-                                        error: '',
-                                    }, () => {
-                                        let resetAction = StackActions.reset({
-                                            index: 0,
-                                            actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
+                                <Text
+                                    onPress={() => {
+                                        this.setState({
+                                            name: '',
+                                            mobile: '',
+                                            password: '',
+                                            selectedCountry: '',
+                                            confirmPassword: '',
+                                            email: '',
+                                            role: '',
+                                            error: '',
+                                        }, () => {
+                                            let resetAction = StackActions.reset({
+                                                index: 0,
+                                                actions: [NavigationActions.navigate({ routeName: 'InitialScreen' })],
+                                            })
+                                            this.props.navigation.dispatch(resetAction);
                                         })
-                                        this.props.navigation.dispatch(resetAction);
-                                    })
-                                }}
-                                style={{
-                                    color: colors.WHITE,
-                                    fontWeight: 'bold',
-                                    fontSize: fontSizes.largel,
-                                    marginVertical: wp(2.5),
-                                    marginHorizontal: wp(5),
-                                    alignSelf: 'center'
-                                }}>
-                                {"Already have an account "}
-                                <Text style={{
-                                    color: colors.APPGREEN
-                                }}>{'Sign In'}</Text>
-                            </Text>
-                        </KeyboardAwareScrollView>
+                                    }}
+                                    style={{
+                                        color: colors.WHITE,
+                                        fontWeight: 'bold',
+                                        fontSize: fontSizes.largel,
+                                        marginVertical: wp(2.5),
+                                        marginHorizontal: wp(5),
+                                        alignSelf: 'center'
+                                    }}>
+                                    {"Already have an account "}
+                                    <Text style={{
+                                        color: colors.APPGREEN
+                                    }}>{'Sign In'}</Text>
+                                </Text>
+                            </KeyboardAwareScrollView>
+                        }
                     </ImageBackground>
                 </View>
             </SafeAreaView>

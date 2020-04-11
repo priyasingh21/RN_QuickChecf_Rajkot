@@ -168,7 +168,7 @@ class SignInWithPhone extends Component {
                         {(type === 'phone') ? 'Sign In with mobile number' : 'Sign In with Email'}
                     </Text>
                     {
-                        (type === 'phone') &&
+                        (type === 'phone' && country_list.length > 0) &&
                         <View style={{
                             flexDirection: 'row',
                             padding: wp(3),
@@ -197,7 +197,7 @@ class SignInWithPhone extends Component {
                                 }}>
                                     <Image
                                         source={require('../../../../assets/flag_of_India.png')}
-                                        style={{ height: wp(6), width: wp(6) }}
+                                        style={{height: wp(6), width: wp(6)}}
                                     />
                                 </View>
 
@@ -211,7 +211,7 @@ class SignInWithPhone extends Component {
                                     bgColor={colors.WHITE}
                                     tintColor={'#666666'}
                                     activityTintColor={'green'}
-                                    handler={(selection, row) => country_list && country_list.length > 0 && this.setState({ selectedCountry: [country_list][selection][row] })}
+                                    handler={(selection, row) => country_list && country_list.length > 0 && this.setState({selectedCountry: [country_list][selection][row]})}
                                     data={[country_list]}
                                 />
                             </View>
@@ -225,18 +225,22 @@ class SignInWithPhone extends Component {
                                 borderBottomRightRadius: wp(3),
                             }}>
                                 <TextInput
-                                    ref={(ref) => { this.phoneNumberRef = ref; }}
+                                    ref={(ref) => {
+                                        this.phoneNumberRef = ref;
+                                    }}
                                     onChangeText={(text) => this.updateText(text, 'phoneNumber')}
                                     placeholder={'Enter mobile number'}
-                                    onFocus={() => this.setState({ error: '' })}
+                                    onFocus={() => this.setState({error: ''})}
                                     value={phoneNumber}
-                                    style={{ borderBottomWidth: 1, borderBottomColor: colors.BLACK, }}
+                                    style={{borderBottomWidth: 1, borderBottomColor: colors.BLACK,}}
                                     keyboardType={'numeric'}
                                     maxLength={10}
                                 />
                             </View>
                         </View>
-                        ||
+                    }
+                    {
+                        type === 'email' &&
                         <View style={{ marginTop: wp(5) }}>
                             <CustomTextInput
                                 textInputOuterViewStyle={{

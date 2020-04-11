@@ -50,8 +50,7 @@ const getAllMenu = (data = {}) => {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + api_token
-                },
-                body: formData
+                }
             })  .then(response => response.json())
                 .then(res => {
                     processing(dispatch);

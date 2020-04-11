@@ -78,7 +78,7 @@ class Home extends Component {
         return (
             <View key={index}>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Dish', { displayKey: 'Cuisine', forYouData: item, isEmpty: false })}
+                    onPress={() => this.props.navigation.navigate('Dish', { displayKey: 'Cuisine', data: item, isEmpty: false })}
                     style={renderCuisineView}>
                     <Image
                         style={{ height: '100%', width: '100%' }}
@@ -95,7 +95,7 @@ class Home extends Component {
         return (
             <View key={index}>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Dish', { displayKey: 'ForYou', forYouData: item, isEmpty: false })}
+                    onPress={() => this.props.navigation.navigate('Dish', { displayKey: 'ForYou', data: item, isEmpty: false })}
                     style={renderCuisineView}>
                     <Image
                         style={{ height: '100%', width: '100%' }}
@@ -111,7 +111,7 @@ class Home extends Component {
         return (
             <View style={{ backgroundColor: colors.OFFGREEN, paddingHorizontal: wp(3) }} key={index}>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Dish', { displayKey: 'MenuSelection', isEmpty: true })}
+                    onPress={() => this.props.navigation.navigate('Dish', { displayKey: 'MenuSelection', isEmpty: true, data: item })}
                     style={[renderCuisineView, { height: hp(21), backgroundColor: colors.OFFGREEN }]}>
                     <View style={{ height: hp(17), width: hp(25), backgroundColor: colors.SILVER }}>
                         <Image
