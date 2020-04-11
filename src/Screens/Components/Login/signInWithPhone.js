@@ -232,7 +232,7 @@ class SignInWithPhone extends Component {
                                     placeholder={'Enter mobile number'}
                                     onFocus={() => this.setState({error: ''})}
                                     value={phoneNumber}
-                                    style={{borderBottomWidth: 1, borderBottomColor: colors.BLACK,}}
+                                    style={{borderBottomWidth: 1, borderBottomColor: colors.BLACK, paddingVertical: wp(1)}}
                                     keyboardType={'numeric'}
                                     maxLength={10}
                                 />

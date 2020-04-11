@@ -5,7 +5,9 @@ import {AppButton, CustomHeader, ProcessIndicator} from '../../Common';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon1 from 'react-native-vector-icons/AntDesign';
 import { NavigationEvents } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage';
 
+let token = AsyncStorage.getItem('loginData')
 class DishScreen extends Component{
 
     constructor(props) {
@@ -28,8 +30,10 @@ class DishScreen extends Component{
         this.setState({
             isLoading: true
         }, () => {
-            handleLocalAction({ type: localActions.LOAD_DISHES_DATA })
-            this.handleLoader();
+            token.then(res => {
+                handleLocalAction({ type: localActions.LOAD_DISHES_DATA, data: {api_token: JSON.parse(res).data[0].api_token} })
+                this.handleLoader();
+            })
         })
     }
 

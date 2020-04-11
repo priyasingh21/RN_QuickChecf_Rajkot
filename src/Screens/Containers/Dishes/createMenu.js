@@ -11,7 +11,7 @@ const handleLocalAction = (dispatch, action, navigation) => {
     const { type, data } = action;
     switch (type) {
         case localActions.GET_ALL_TAGS_SUBTAGS:
-            return dispatch(getAllTagsWithSubTags());
+            return dispatch(getAllTagsWithSubTags(data));
             break
     }
 };

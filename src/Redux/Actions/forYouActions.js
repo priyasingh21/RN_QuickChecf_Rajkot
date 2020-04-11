@@ -1,21 +1,9 @@
 import {CUISINE_DATA, FOR_YOU_DATA} from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants'
 import { processing, status } from './utility';
-import AsyncStorage from '@react-native-community/async-storage';
 
-let api_token = '';
-let user_id = '';
-
-AsyncStorage.getItem('loginData').then(usr => {
-    if(usr) {
-        api_token = JSON.parse(usr).data[0].api_token;
-        user_id = JSON.parse(usr).data[0].id;
-    }
-}).catch(e => {
-
-})
-
-const getAllForYouTypes = () => {
+const getAllForYouTypes = (data) => {
+    let api_token = data.api_token;
     if(api_token) {
         return (dispatch, getState) => {
             processing(dispatch, true)

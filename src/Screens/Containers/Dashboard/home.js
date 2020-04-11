@@ -9,19 +9,19 @@ export const localActions = {
 };
 
 const handleLocalAction = (dispatch, action, navigation) => {
-    const { type } = action;
+    const { type, data } = action;
     switch (type) {
 
         case localActions.CUISINE_DATA:
-            return dispatch(getAllCuisine());
+            return dispatch(getAllCuisine(data));
             break
 
         case localActions.MENU_TYPE_DATA:
-            return dispatch(getAllMenuTypes());
+            return dispatch(getAllMenuTypes(data));
             break
 
         case localActions.FOR_YOU_DATA:
-            return dispatch(getAllForYouTypes());
+            return dispatch(getAllForYouTypes(data));
             break
     }
 };

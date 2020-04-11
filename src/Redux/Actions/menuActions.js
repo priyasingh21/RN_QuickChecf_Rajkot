@@ -1,21 +1,9 @@
 import {FOR_YOU_DATA, MENU_TYPE_DATA, MENUS, ALL_TAGS_AND_SUBTAGS} from './types';
 import { API_ENDPOINT, BASE_URL } from '../../Helper/Constant/apiContants'
 import { processing, status } from './utility';
-import AsyncStorage from '@react-native-community/async-storage';
 
-let api_token = '';
-let user_id = '';
-
-AsyncStorage.getItem('loginData').then(usr => {
-    if(usr) {
-        api_token = JSON.parse(usr).data[0].api_token;
-        user_id = JSON.parse(usr).data[0].id;
-    }
-}).catch(e => {
-
-})
-
-const getAllMenuTypes = () => {
+const getAllMenuTypes = (data = {}) => {
+    let api_token = data.api_token;
     if (api_token) {
         return (dispatch) => {
             processing(dispatch, true)
@@ -41,6 +29,8 @@ const getAllMenuTypes = () => {
 };
 
 const getAllMenu = (data = {}) => {
+    let api_token = data.api_token;
+
     if (api_token) {
         let formData = new FormData();
         formData.append('data', data);
@@ -67,7 +57,9 @@ const getAllMenu = (data = {}) => {
     }
 };
 
-const getAllTagsWithSubTags = () => {
+const getAllTagsWithSubTags = (data = {}) => {
+    let api_token = data.api_token;
+
     if (api_token) {
         return (dispatch) => {
             processing(dispatch, true)
@@ -84,10 +76,13 @@ const getAllTagsWithSubTags = () => {
                             payload: res,
                             type: ALL_TAGS_AND_SUBTAGS
                         });
+                        return Promise.resolve(true)
                     }
-                }).catch(e => {
-                processing(dispatch)
-            })
+                })
+                .catch(e => {
+                    processing(dispatch)
+                    return Promise.reject(true)
+                })
         };
     }
 };

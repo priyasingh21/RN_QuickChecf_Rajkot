@@ -368,9 +368,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     navSectionStyle: {
-        padding: wp('10%'),
+        paddingHorizontal: wp('10%'),
         height: hp(67),
-        paddingBottom: wp(20),
+        paddingTop: wp(3),
     },
     vwImage: {
         width: '100%',

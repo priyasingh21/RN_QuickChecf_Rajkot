@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, Image, ScrollView, TouchableOpacity, StyleSheet, BackHandler, RefreshControl } from 'react-native';
 import { colors, fontSizes, hp, wp } from '../../../Helper';
 import { CustomHeader, ProcessIndicator, CustomAlert2 } from '../../Common';
+import AsyncStorage from '@react-native-community/async-storage';
+
+let token = AsyncStorage.getItem('loginData')
 
 class Home extends Component {
 
@@ -26,16 +29,19 @@ class Home extends Component {
     }
 
     componentDidMount = () => {
-        this.isRefreshing = true;
-        this.loadData();
-        this.isRefreshing = false;
+        token.then(res => {
+            this.isRefreshing = true;
+            this.loadData(JSON.parse(res).data[0].api_token);
+            this.isRefreshing = false;
+
+        })
     }
 
-    loadData = () => {
+    loadData = (api_token = '') => {
         const { handleLocalAction, localActions, navigation } = this.props;
-        handleLocalAction({ type: localActions.MENU_TYPE_DATA })
-        handleLocalAction({ type: localActions.FOR_YOU_DATA })
-        handleLocalAction({ type: localActions.CUISINE_DATA })
+        handleLocalAction({ type: localActions.MENU_TYPE_DATA, data: {api_token: api_token} })
+        handleLocalAction({ type: localActions.FOR_YOU_DATA, data: {api_token: api_token} })
+        handleLocalAction({ type: localActions.CUISINE_DATA, data: {api_token: api_token} })
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -137,9 +143,11 @@ class Home extends Component {
     }
 
     onRefresh = () => {
-        this.isRefreshing = true;
-        this.loadData();
-        this.isRefreshing = false;
+        token.then(res => {
+            this.isRefreshing = true;
+            this.loadData(JSON.parse(res).data[0].api_token);
+            this.isRefreshing = false;
+        })
     }
 
     render() {

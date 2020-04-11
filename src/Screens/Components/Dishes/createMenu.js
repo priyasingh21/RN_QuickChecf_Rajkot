@@ -16,9 +16,11 @@ import {
 import { AppButton, CustomHeader, ActionSheet } from "../../Common";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as ImagePicker from 'react-native-image-crop-picker';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const spicyMenu = ['Mild', 'Medium', 'Hot'];
 
+let token = AsyncStorage.getItem('loginData')
 class CreateMenu extends Component {
 
     constructor(props) {
@@ -44,12 +46,9 @@ class CreateMenu extends Component {
 
     componentDidMount(){
         const { handleLocalAction, localActions, navigation } = this.props;
-        handleLocalAction({ type: localActions.GET_ALL_TAGS_SUBTAGS })
-    }
-
-    UNSAFE_componentWillReceiveProps(nextProps){
-        // alert(JSON.stringify(nextProps.MenuCategory.allTags.success))
-        // alert(JSON.stringify(nextProps.MenuCategory.allTags.data))
+        token.then(res => {
+            handleLocalAction({ type: localActions.GET_ALL_TAGS_SUBTAGS, data: {api_token: JSON.parse(res).data[0].api_token} })
+        })
     }
 
     componentWillUnmount() {

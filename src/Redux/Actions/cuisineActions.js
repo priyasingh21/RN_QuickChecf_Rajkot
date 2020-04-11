@@ -1,21 +1,10 @@
 import {CUISINE_DATA} from './types';
-import AsyncStorage from '@react-native-community/async-storage';
 import {API_ENDPOINT, BASE_URL} from '../../Helper/Constant/apiContants';
 import {processing} from './utility';
 
-let api_token = '';
-let user_id = '';
+const getAllCuisine = (data = {}) => {
+    let api_token = data.api_token;
 
-AsyncStorage.getItem('loginData').then(usr => {
-    if(usr) {
-        api_token = JSON.parse(usr).data[0].api_token;
-        user_id = JSON.parse(usr).data[0].id;
-    }
-}).catch(e => {
-
-})
-
-const getAllCuisine = () => {
     if(api_token) {
         return (dispatch, getState) => {
             processing(dispatch, true)
@@ -34,7 +23,9 @@ const getAllCuisine = () => {
                             type: CUISINE_DATA
                         });
                     }
-                }).catch(e => { })
+                })
+                .catch(e => {
+                })
         };
     }
 };

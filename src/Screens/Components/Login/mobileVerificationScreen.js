@@ -111,8 +111,13 @@ class MobileVerificationScreen extends Component {
 
         if (verification_code && verification_code.length === 6 && verificationCodeResponse && (verificationCodeResponse.toString() === verification_code)) {
             AsyncStorage.setItem('setVerificationCode', JSON.stringify({ type: 'phone', entered: true }), () => {
-                this.props.navigation.navigate('AppDrawer');
-            })
+                AsyncStorage.getItem('loginData').then(res => {
+                    if(res && JSON.parse(res).data[0]) {
+                        this.props.navigation.navigate('AppDrawer');
+                    }
+                }).catch(e => {
+
+                })})
         } else {
             this.updateText('Whooops,\nEntered code is wrong, Please try again...', 'error')
             this.setState({ isShowError: true })
